@@ -1,0 +1,1677 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aquacool by Aquaflask</title>
+<meta name="description" content="Aquacool by Aquaflask: a PU leather riding jacket with built-in cooling. Student marketing concept.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: two tabs — "Design your jacket" (designer + deals/buy) and "About Aquacool" (hero, product layers, comparison, campaign notes) */
+:root{
+  --bg:#F2F6F8; --surface:#FFFFFF; --ink:#141D24; --muted:#4F5E68;
+  --line:#D3DDE3; --accent:#0091AA; --accent-ink:#FFFFFF; --stage:#E1F0F4; --note:#FFF4CF; --soft:#EEF4F7;
+  --display:"Bricolage Grotesque", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --body:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r:18px; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1317; --surface:#141F26; --ink:#ECF3F7; --muted:#A3B2BC;
+  --line:#28363F; --accent:#3CD3EC; --accent-ink:#05222A; --stage:#0E1E25; --note:#3A3418; --soft:#1A2830; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1317; --surface:#141F26; --ink:#ECF3F7; --muted:#A3B2BC;
+  --line:#28363F; --accent:#3CD3EC; --accent-ink:#05222A; --stage:#0E1E25; --note:#3A3418; --soft:#1A2830; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;transition:background .4s,color .4s}
+img,svg{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:1160px;margin:0 auto;padding:20px max(16px, env(safe-area-inset-right,0px)) 120px max(16px, env(safe-area-inset-left,0px))}
+section[id]{scroll-margin-top:90px}
+
+
+/* main tabs */
+.tabbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--bg);display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:10px;margin-bottom:8px;border-bottom:1px solid var(--line);transition:background .4s}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:16;background:var(--bg)}
+.tabbar .logo{font-family:var(--display);font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-right:auto}
+.tabbar .logo small{font-family:var(--body);font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted)}
+.maintabs{display:flex;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:4px;gap:4px}
+.maintabs button{font:inherit;font-size:16px;font-weight:700;border:none;background:transparent;color:var(--ink);padding:10px 20px;border-radius:999px;cursor:pointer}
+.maintabs button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.maintabs .short{display:none}
+@media (max-width:600px){.maintabs .full{display:none}.maintabs .short{display:inline}}
+@media (max-width:600px){.tabbar .logo{flex-basis:100%}.maintabs{width:100%}.maintabs button{flex:1;padding:10px 8px;font-size:15px}}
+.sec.first,.hero.first{margin-top:28px}
+/* top bar + nav */
+.topbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 16px;margin-bottom:14px}
+.concept{background:var(--note);border-radius:12px;padding:8px 14px;font-size:14px;margin:0;flex:1 1 320px}
+.toggles{display:flex;gap:8px;flex-wrap:wrap}
+.seg{display:inline-flex;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:3px}
+.seg button{font:inherit;font-size:15px;font-weight:700;border:none;background:transparent;color:var(--ink);padding:8px 16px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+nav.jump{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center;margin-bottom:24px;font-weight:700;font-size:15px}
+nav.jump .logo{font-family:var(--display);font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-right:auto}
+nav.jump .logo small{font-family:var(--body);font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted)}
+@media (max-width:600px){nav.jump .logo{flex-basis:100%}}
+nav.jump a{color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
+nav.jump a:hover{border-color:var(--accent)}
+
+/* shared section heads */
+.sec{margin-top:72px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.sec h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.sec .sub{color:var(--muted);margin:8px 0 0;max-width:60ch}
+.sec-head{margin-bottom:22px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:28px;align-items:center}
+@media (max-width:860px){.hero{grid-template-columns:1fr}}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,7vw,76px);line-height:.98;margin:8px 0 14px;letter-spacing:-.025em;text-wrap:balance}
+.hero h1 .pill{display:inline-block;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:0 .3em;transform:rotate(-3deg)}
+.hero .lede{color:var(--muted);margin:0 0 20px;max-width:44ch;font-size:18px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+.facts li{border:1.5px solid var(--line);border-radius:999px;padding:5px 12px;font-size:14px;font-weight:500}
+.stagebg{background:var(--stage);border-radius:28px;transition:background .5s}
+.hero-vis{padding:22px 18px 14px;display:grid;gap:6px;justify-items:center}
+.hero-vis .pair{display:flex;justify-content:center;align-items:flex-end;gap:2%;width:100%}
+.hero-vis .pair svg{width:49%;max-width:300px;height:auto;cursor:pointer}
+.hero-vis .cap{font-size:14px;color:var(--muted);text-align:center}
+.hero-vis .cap strong{color:var(--ink)}
+
+/* product layers */
+.layers-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px;align-items:center}
+@media (max-width:860px){.layers-wrap{grid-template-columns:1fr}}
+.layer-vis{padding:18px}
+#layerSvg{display:block;width:100%;max-width:460px;height:auto;margin:0 auto}
+#layerSvg .slab{cursor:pointer;transition:opacity .25s, transform .3s}
+#layerSvg .slab.dim{opacity:.35}
+#layerSvg .slab.on{transform:translateX(-8px)}
+.layer-list{display:grid;gap:10px}
+.lbtn{font:inherit;text-align:left;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:14px;padding:14px 16px;cursor:pointer}
+.lbtn[aria-pressed="true"]{border-color:var(--accent);background:var(--soft)}
+.lbtn .ln{grid-row:span 2;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--surface);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:15px}
+.lbtn strong{font-size:17px}
+.lbtn span.d{font-size:15px;color:var(--muted);line-height:1.45}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:28px}
+.feat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.feat h3{font-family:var(--display);font-size:18px;margin:0 0 6px;text-wrap:balance}
+.feat p{margin:0;color:var(--muted);font-size:15px}
+.feat ol{margin:8px 0 0;padding-left:20px;color:var(--muted);font-size:15px;display:grid;gap:2px}
+.feat .bar{display:block;width:36px;height:6px;border-radius:999px;margin-bottom:12px}
+
+/* compare */
+.compare{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:24px max(16px,3vw)}
+.compare h3{font-family:var(--display);font-weight:800;font-size:clamp(22px,3vw,28px);margin:0}
+.compare .sub2{color:var(--muted);margin:4px 0 0;max-width:60ch}
+.compare-body{display:grid;grid-template-columns:1fr 1fr minmax(240px,1.2fr);gap:20px;align-items:center;margin-top:16px}
+@media (max-width:760px){.compare-body{grid-template-columns:1fr 1fr}.compare-ctrl{grid-column:1/-1}}
+.heatfig{text-align:center;min-width:0}
+.heatfig svg{width:100%;max-width:200px;height:auto}
+.heatfig path{transition:fill .25s}
+.heatlabel{font-weight:700;font-size:15px}
+.temp{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,34px);font-variant-numeric:tabular-nums}
+.compare-ctrl{display:grid;gap:10px}
+.compare-ctrl input[type=range]{width:100%;accent-color:var(--accent);height:28px}
+.scale{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.diff{font-family:var(--display);font-weight:800;font-size:22px;color:var(--accent);line-height:1.2}
+.legend{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.legend i{flex:1;height:10px;border-radius:999px;background:linear-gradient(90deg,#3CC7E0,#7FE0C2,#FFD84A,#FF9F3F,#E8452F)}
+.fine{font-size:13px;color:var(--muted);margin:0}
+
+/* designer */
+.studio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:24px;align-items:start}
+@media (max-width:860px){.studio{grid-template-columns:1fr}}
+.stage{padding:18px;position:sticky;top:88px}
+@media (max-width:860px){.stage{position:static}}
+.viewbar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.viewnote{font-size:14px;color:var(--muted)}
+.figs{display:flex;align-items:flex-end;justify-content:center;gap:4px}
+#jacket{width:76%;max-width:420px;height:auto}
+#bottle{width:22%;max-width:110px;height:auto;transition:opacity .3s, filter .5s}
+.jk [data-zone]{transition:fill .35s ease, filter .5s}
+#jacket [data-zone]{cursor:pointer}
+#jacket [data-zone].active{filter:drop-shadow(0 0 7px rgba(255,255,255,.95))}
+.o{stroke:#0B0E11;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.nightnote{font-size:14px;color:#BFEFF7;margin:6px 0 0;text-align:center}
+.combo{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;margin-top:10px}
+.combo-name{font-family:var(--display);font-weight:800;font-size:23px;line-height:1.1}
+.combo-sub{font-size:14px;color:var(--muted)}
+.price{font-family:var(--display);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums;text-align:right}
+.price small{display:block;font-family:var(--body);font-weight:400;font-size:13px;color:var(--muted)}
+
+/* Night riding view */
+body.night .stagebg{background:radial-gradient(ellipse at 50% -10%, #2A4752 0%, #0C181D 55%, #070D10 100%)}
+body.night .stage .viewnote, body.night .hero-vis .cap, body.night .deal-vis .cap{color:#9FB6BF}
+body.night .hero-vis .cap strong, body.night .stage .combo-name, body.night .stage .price{color:#ECF3F7}
+body.night .stage .combo-sub, body.night .stage .price small{color:#9FB6BF}
+body.night .jk [data-zone]:not([data-zone="accent"]){filter:brightness(.55) saturate(.8)}
+body.night .jk [data-zone="accent"]{filter:brightness(1.25) drop-shadow(0 0 3px #fff) drop-shadow(0 0 9px rgba(255,255,255,.8))}
+body.night #jacket [data-zone].active:not([data-zone="accent"]){filter:brightness(.85) drop-shadow(0 0 6px rgba(255,255,255,.6))}
+body.night .bt{filter:brightness(.55)}
+
+.steps{display:grid;gap:16px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;min-width:0}
+.step-head{display:flex;gap:12px;align-items:center}
+.num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:18px}
+.step h3{font-family:var(--display);font-size:21px;margin:0;line-height:1.2}
+.step h3 small{display:block;font-family:var(--body);font-weight:400;font-size:14px;color:var(--muted)}
+
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{font:inherit;font-size:15px;font-weight:700;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.tab[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--surface)}
+.presets{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.pcard,.tier{font:inherit;text-align:left;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:14px;padding:12px 14px;cursor:pointer;display:grid;gap:6px;align-content:start;min-width:0}
+.pcard:hover,.tier:hover{border-color:var(--muted)}
+.pcard[aria-pressed="true"],.tier[aria-pressed="true"]{border-color:var(--accent);background:var(--soft)}
+.pcard strong,.tier strong{font-size:16px}
+.pcard .d,.tier .ti{font-size:14px;color:var(--muted);line-height:1.4}
+.dots{display:flex;gap:4px}
+.dots i{width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(127,127,127,.4)}
+
+.quizbtn{justify-self:start}
+.quiz,.guide{border:2px dashed var(--line);border-radius:14px;padding:16px;display:grid;gap:16px}
+.q p{font-weight:700;margin:0 0 8px}
+.q .tabs .tab{font-weight:500}
+.result{background:var(--soft);border-radius:12px;padding:14px;display:grid;gap:8px}
+.result h4{font-family:var(--display);font-size:20px;margin:0}
+.result p{margin:0;font-size:15px;color:var(--muted)}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.zone{font:inherit;font-size:15px;font-weight:500;display:flex;align-items:center;gap:8px;padding:9px 14px 9px 9px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.zone i{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(127,127,127,.4)}
+.zone[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--surface)}
+.hint{font-size:15px;background:var(--soft);border-radius:12px;padding:10px 14px;margin:0}
+.group-label{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:4px 0 8px}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(68px,1fr));gap:10px}
+.sw{font:inherit;border:none;background:none;padding:0;cursor:pointer;color:var(--ink);display:grid;gap:4px;justify-items:center;font-size:13px;text-align:center;line-height:1.2}
+.sw b{display:block;width:100%;max-width:56px;aspect-ratio:1;border-radius:50% 50% 46% 46%/58% 58% 42% 42%;border:2px solid rgba(127,127,127,.35);transition:transform .15s}
+.sw:hover b{transform:translateY(-3px)}
+.sw[aria-pressed="true"] b{outline:3px solid var(--accent);outline-offset:2px}
+.sw[aria-pressed="true"]{font-weight:700}
+
+.sizes{display:flex;flex-wrap:wrap;gap:8px}
+.sizes .tab{min-width:56px}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.field{display:grid;gap:4px;font-size:15px;font-weight:500}
+.field input,.field select,select{font:inherit;padding:9px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+.field small{font-weight:400;color:var(--muted);font-size:13px}
+.chart-wrap{overflow-x:auto}
+table.chart{border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;min-width:100%}
+table.chart th,table.chart td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:left}
+table.chart tr.hit td{background:var(--soft);font-weight:700}
+
+/* deals */
+.deals{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:860px){.deals{grid-template-columns:1fr}}
+.deal-left{display:grid;gap:18px}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tier{padding:16px;gap:6px}
+.tier .tp{font-family:var(--display);font-weight:800;font-size:26px;font-variant-numeric:tabular-nums;line-height:1.1}
+.tier .was{font-size:14px;color:var(--muted);text-decoration:line-through}
+.tier .save{justify-self:start;font-size:12px;font-weight:700;letter-spacing:.04em;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:2px 8px}
+.tier .pop{justify-self:start;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.boxed{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.bottle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.order{background:var(--surface);border:2px solid var(--accent);border-radius:24px;padding:18px;display:grid;gap:14px;position:sticky;top:88px}
+@media (max-width:860px){.order{position:static}}
+.order h3{font-family:var(--display);font-size:22px;margin:0}
+.deal-vis{padding:12px;display:flex;justify-content:center;align-items:flex-end;gap:4px}
+.deal-vis svg.jk{width:62%;max-width:240px;height:auto}
+.deal-vis svg.bt{width:20%;max-width:80px;height:auto}
+.lines{display:grid;gap:6px;margin:0;font-size:15px}
+.lines div{display:flex;justify-content:space-between;gap:12px}
+.lines dt{color:var(--muted)}
+.lines dd{margin:0;text-align:right;font-weight:500;min-width:0}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:12px}
+.total strong{font-family:var(--display);font-weight:800;font-size:30px;font-variant-numeric:tabular-nums}
+.paynote{font-size:14px;color:var(--muted);margin:0}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{font:inherit;font-weight:700;font-size:16px;padding:12px 20px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-block}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.big{font-size:19px;padding:15px 26px;width:100%;text-align:center}
+.btn.small{font-size:15px;padding:9px 16px}
+.btn.link{border:none;padding:9px 4px;text-decoration:underline;font-weight:500}
+.btn:disabled{opacity:.6;cursor:wait}
+button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.empty{font-size:14px;color:var(--muted)}
+
+/* word of mouth */
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:860px){.quotes{grid-template-columns:1fr}}
+.quote{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:10px;align-content:start;min-width:0}
+.quote blockquote{margin:0;font-family:var(--display);font-weight:500;font-size:19px;line-height:1.35;text-wrap:pretty}
+.quote figcaption{font-size:14px;color:var(--muted)}
+/* ride and try */
+.rat{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:22px max(16px,2.4vw);display:grid;gap:18px;margin-bottom:8px}
+.rat-head h3{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,32px);margin:0;text-wrap:balance}
+.rat-tag{margin:4px 0 0;font-family:var(--display);font-weight:800;font-size:18px;color:var(--accent)}
+.rat-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:14px;align-items:start}
+@media (max-width:860px){.rat-grid{grid-template-columns:1fr}}
+.events{display:grid;gap:12px}
+.zones-card{background:var(--soft);border-radius:var(--r);padding:18px}
+.zones-card h4,.reg-head h4{font-family:var(--display);font-size:19px;margin:0 0 8px}
+.zlist{margin:0;padding-left:22px;display:grid;gap:8px}
+.zlist li{font-size:15px;color:var(--muted)}
+.zlist strong{color:var(--ink);display:block}
+.regform{border:2px dashed var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.reg-head p{margin:0;color:var(--muted);font-size:15px}
+.regform .check{font-size:15px}
+.regform .result{font-size:15px;color:var(--ink)}
+/* booths */
+.booths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+@media (max-width:860px){.booths{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.booths{grid-template-columns:1fr}}
+.booth{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:6px;align-content:start;min-width:0}
+.booth.next{border:2px solid var(--accent)}
+.booth .when{font-family:var(--display);font-weight:800;font-size:19px;font-variant-numeric:tabular-nums}
+.booth .where{font-weight:700}
+.booth .spot{font-size:14px;color:var(--muted)}
+.status{justify-self:start;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:2px 9px;background:var(--soft);color:var(--muted)}
+.status.next,.status.now{background:var(--accent);color:var(--accent-ink)}
+.booth .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.booth .tags span{font-size:12.5px;border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+.booth a{font-size:14px;color:var(--accent);font-weight:700;margin-top:4px}
+.buy-head{margin-top:40px}
+.buy-head h3{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,32px);margin:0;text-wrap:balance}
+.channels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
+@media (max-width:980px){.channels{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.channels{grid-template-columns:1fr}}
+.channel{background:var(--soft);border-radius:var(--r);padding:18px;display:grid;gap:8px;align-content:start;min-width:0}
+.channel.feature{background:var(--surface);border:2px solid var(--accent)}
+.channel h4{font-family:var(--display);font-size:19px;margin:0;text-wrap:balance}
+.channel p{margin:0;color:var(--muted);font-size:15px}
+.channel .tip{font-size:13.5px;color:var(--ink);font-weight:500}
+.channel .btn{justify-self:start;margin-top:4px}
+.status.soon{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.status.later{background:transparent;color:var(--muted);border:1px dashed var(--line)}
+
+/* buy bar, toast, modal */
+.buybar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,0,0,.08);padding:10px max(16px, env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px, env(safe-area-inset-left,0px));transform:translateY(110%);transition:transform .3s}
+.buybar.show{transform:none}
+.buybar .in{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.buybar .bb-text{flex:1;min-width:0;line-height:1.25}
+.buybar .bb-name{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.buybar .bb-price{font-family:var(--display);font-weight:800;font-variant-numeric:tabular-nums}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(90px + env(safe-area-inset-bottom,0px));z-index:30;width:max-content;max-width:min(560px, calc(100% - 32px));background:var(--ink);color:var(--surface);border-radius:14px;padding:12px 16px;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,.25);word-break:break-word}
+.modal-bg{position:fixed;inset:0;z-index:40;background:rgba(5,12,15,.55);display:grid;place-items:center;padding:16px}
+.modal{background:var(--surface);color:var(--ink);border-radius:24px;padding:22px;width:min(480px,100%);max-height:calc(100% - 32px);overflow:auto;display:grid;gap:14px}
+.modal h3{font-family:var(--display);font-size:24px;margin:0}
+.pay{display:grid;gap:8px}
+.pay label{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;font-size:15px}
+.pay label:has(input:checked){border-color:var(--accent);background:var(--soft)}
+.pay input{width:18px;height:18px;accent-color:var(--accent)}
+
+/* campaign notes */
+.notes{margin-top:72px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:4px 20px}
+.notes summary{cursor:pointer;font-family:var(--display);font-weight:800;font-size:20px;padding:14px 0}
+.notes .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;padding-bottom:20px}
+.card{background:var(--soft);border-radius:14px;padding:18px;min-width:0}
+.card h3{font-family:var(--display);font-size:18px;margin:0 0 6px;text-wrap:balance}
+.card p,.card li{color:var(--muted);margin:0;max-width:70ch}
+.card ul,.card ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.card strong{color:var(--ink)}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.wide{grid-column:1/-1}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <p class="concept" data-i18n-html="concept"></p>
+    <div class="toggles">
+      <div class="seg" role="group" aria-label="Language">
+        <button id="langEn" aria-pressed="true">English</button>
+        <button id="langFil" aria-pressed="false">Filipino</button>
+      </div>
+      <div class="seg" role="group" aria-label="Day or night">
+        <button id="modeDay" aria-pressed="true" data-i18n="day"></button>
+        <button id="modeNight" aria-pressed="false" data-i18n="night"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <span class="logo">Aquacool <small>by Aquaflask</small></span>
+    <div class="maintabs" role="tablist" aria-label="Site sections">
+      <button role="tab" id="tab-build" aria-controls="panel-build" aria-selected="true" data-tab="build"><span class="full" data-i18n="tabBuild"></span><span class="short" data-i18n="tabBuildS"></span></button>
+      <button role="tab" id="tab-about" aria-controls="panel-about" aria-selected="false" data-tab="about"><span class="full" data-i18n="tabAbout"></span><span class="short" data-i18n="tabAboutS"></span></button>
+      <button role="tab" id="tab-events" aria-controls="panel-events" aria-selected="false" data-tab="events"><span class="full" data-i18n="tabEvents"></span><span class="short" data-i18n="tabEventsS"></span></button>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-build" role="tabpanel" aria-labelledby="tab-build">
+  <!-- ============ DESIGN ============ -->
+  <section class="sec first" id="design">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="desEyebrow"></p>
+      <h2 data-i18n="desTitle"></h2>
+      <p class="sub" data-i18n="desSub"></p>
+    </div>
+    <div class="studio">
+      <div class="stage stagebg">
+        <div class="viewbar">
+          <div class="seg" role="group" aria-label="Jacket view">
+            <button id="viewFront" aria-pressed="true" data-i18n="front"></button>
+            <button id="viewBack" aria-pressed="false" data-i18n="back"></button>
+          </div>
+          <span class="viewnote" data-i18n="tip"></span>
+        </div>
+        <div class="figs">
+          <svg id="jacket" class="jk" viewBox="0 0 400 420" role="img" aria-label="Aquacool riding jacket preview">
+          <defs>
+            <linearGradient id="shade" x1="0" x2="1">
+              <stop offset="0" stop-color="#000" stop-opacity=".14"/>
+              <stop offset=".45" stop-color="#fff" stop-opacity=".12"/>
+              <stop offset="1" stop-color="#000" stop-opacity=".18"/>
+            </linearGradient>
+          </defs>
+
+          <!-- ========== FRONT ========== -->
+          <g id="front">
+            <path data-zone="sleeves" class="o" d="M140,112 C104,116 86,134 78,170 L48,318 L94,326 L126,206 Z"/>
+            <path data-zone="sleeves" class="o" d="M260,112 C296,116 314,134 322,170 L352,318 L306,326 L274,206 Z"/>
+            <path data-zone="accent" class="o" d="M48,318 L94,326 L90,350 L43,342 Z"/>
+            <path data-zone="accent" class="o" d="M352,318 L306,326 L310,350 L357,342 Z"/>
+            <path data-zone="armor" class="o" d="M106,128 C120,118 140,120 146,132 L136,176 C122,180 104,176 96,166 Z"/>
+            <path data-zone="armor" class="o" d="M294,128 C280,118 260,120 254,132 L264,176 C278,180 296,176 304,166 Z"/>
+            <path data-zone="armor" class="o" d="M70,226 C80,218 100,220 106,230 L100,270 C90,276 72,274 64,266 Z"/>
+            <path data-zone="armor" class="o" d="M330,226 C320,218 300,220 294,230 L300,270 C310,276 328,274 336,266 Z"/>
+            <path data-zone="accent" class="o" d="M98,192 L114,184 L110,202 Z"/>
+            <path data-zone="accent" class="o" d="M302,192 L286,184 L290,202 Z"/>
+            <path data-zone="shell" class="o" d="M140,112 L166,106 Q200,122 234,106 L260,112 L270,208 L274,392 Q200,402 126,392 L130,208 Z"/>
+            <!-- PCM panels: upper chest + side torso -->
+            <path data-zone="pcm" class="o" d="M146,134 L186,128 L186,178 L150,188 Z"/>
+            <path data-zone="pcm" class="o" d="M254,134 L214,128 L214,178 L250,188 Z"/>
+            <path data-zone="pcm" class="o" d="M134,216 C150,212 158,220 160,232 L160,330 C150,336 140,334 132,330 Z"/>
+            <path data-zone="pcm" class="o" d="M266,216 C250,212 242,220 240,232 L240,330 C250,336 260,334 268,330 Z"/>
+            <g fill="none" stroke="#000" stroke-opacity=".22" stroke-width="1.5" pointer-events="none">
+              <path d="M152,146 l30,-4 M153,158 l30,-4 M154,170 l30,-4 M218,142 l30,4 M218,154 l30,4 M218,166 l30,4"/>
+              <path d="M138,240 h18 M138,262 h18 M138,284 h18 M138,306 h18 M244,240 h18 M244,262 h18 M244,284 h18 M244,306 h18"/>
+            </g>
+            <g pointer-events="none" fill="#fff" fill-opacity=".9" font-family="DM Sans, Arial, sans-serif" text-anchor="middle">
+              <text x="234" y="152" font-size="7.6" font-weight="700" letter-spacing=".1">AquaCool</text>
+              <text x="234" y="160" font-size="5.2" font-weight="500">by Aquaflask</text>
+            </g>
+            <path d="M156,204 L184,198 M244,204 L216,198" stroke="#0B0E11" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <rect data-zone="accent" class="o" x="128" y="358" width="26" height="12" rx="3"/>
+            <rect data-zone="accent" class="o" x="246" y="358" width="26" height="12" rx="3"/>
+            <path d="M140,112 L166,106 Q200,122 234,106 L260,112 L270,208 L274,392 Q200,402 126,392 L130,208 Z" fill="url(#shade)" pointer-events="none"/>
+            <path data-zone="shell" class="o" d="M164,92 Q200,104 236,92 L240,116 Q200,128 160,116 Z"/>
+            <path data-zone="accent" class="o" d="M161,111 Q200,123 239,111 L240,116 Q200,128 160,116 Z"/>
+            <rect class="o" x="196" y="118" width="8" height="278" rx="3" fill="#B9C3CA" pointer-events="none"/>
+            <rect data-zone="accent" class="o" x="193" y="140" width="14" height="24" rx="5"/>
+          </g>
+
+          <!-- ========== BACK ========== -->
+          <g id="back" display="none">
+            <path data-zone="sleeves" class="o" d="M140,112 C104,116 86,134 78,170 L48,318 L94,326 L126,206 Z"/>
+            <path data-zone="sleeves" class="o" d="M260,112 C296,116 314,134 322,170 L352,318 L306,326 L274,206 Z"/>
+            <path data-zone="accent" class="o" d="M48,318 L94,326 L90,350 L43,342 Z"/>
+            <path data-zone="accent" class="o" d="M352,318 L306,326 L310,350 L357,342 Z"/>
+            <path data-zone="armor" class="o" d="M106,128 C120,118 140,120 146,132 L136,176 C122,180 104,176 96,166 Z"/>
+            <path data-zone="armor" class="o" d="M294,128 C280,118 260,120 254,132 L264,176 C278,180 296,176 304,166 Z"/>
+            <path data-zone="armor" class="o" d="M70,226 C80,218 100,220 106,230 L100,270 C90,276 72,274 64,266 Z"/>
+            <path data-zone="armor" class="o" d="M330,226 C320,218 300,220 294,230 L300,270 C310,276 328,274 336,266 Z"/>
+            <path data-zone="shell" class="o" d="M140,112 L166,98 Q200,92 234,98 L260,112 L270,208 L274,392 Q200,402 126,392 L130,208 Z"/>
+            <!-- PCM back panel + lower sides -->
+            <path data-zone="pcm" class="o" d="M150,130 L250,130 L256,250 L238,300 L162,300 L144,250 Z"/>
+            <path data-zone="pcm" class="o" d="M136,304 L158,306 L158,362 L134,362 Z"/>
+            <path data-zone="pcm" class="o" d="M264,304 L242,306 L242,362 L266,362 Z"/>
+            <g fill="none" stroke="#000" stroke-opacity=".2" stroke-width="1.5" pointer-events="none">
+              <path d="M156,236 h34 M210,236 h34 M158,256 h32 M210,256 h32 M164,276 h26 M210,276 h26"/>
+            </g>
+            <path data-zone="shell" class="o" d="M194,132 h12 v166 h-12 Z"/>
+            <!-- removable gel pockets -->
+            <rect data-zone="gel" class="o" x="157" y="150" width="32" height="66" rx="11"/>
+            <rect data-zone="gel" class="o" x="211" y="150" width="32" height="66" rx="11"/>
+            <g fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.5" pointer-events="none">
+              <path d="M163,166 h20 M163,182 h20 M163,198 h20 M173,156 v54 M217,166 h20 M217,182 h20 M217,198 h20 M227,156 v54"/>
+            </g>
+            <!-- rear zipper vents -->
+            <rect data-zone="accent" class="o" x="133" y="192" width="8" height="62" rx="3"/>
+            <rect data-zone="accent" class="o" x="259" y="192" width="8" height="62" rx="3"/>
+            <path d="M137,196 v54 M263,196 v54" stroke="#0B0E11" stroke-width="1.5" stroke-dasharray="2 3" pointer-events="none"/>
+            <rect data-zone="accent" class="o" x="128" y="358" width="26" height="12" rx="3"/>
+            <rect data-zone="accent" class="o" x="246" y="358" width="26" height="12" rx="3"/>
+            <path d="M140,112 L166,98 Q200,92 234,98 L260,112 L270,208 L274,392 Q200,402 126,392 L130,208 Z" fill="url(#shade)" pointer-events="none"/>
+            <path data-zone="shell" class="o" d="M166,84 Q200,78 234,84 L236,104 Q200,98 164,104 Z"/>
+            <g pointer-events="none" fill="#fff" fill-opacity=".9" font-family="DM Sans, Arial, sans-serif" text-anchor="middle">
+              <text x="200" y="117" font-size="11" font-weight="700">AquaCool</text>
+              <text x="200" y="126" font-size="6.5" font-weight="500">by Aquaflask</text>
+            </g>
+          </g>
+        </svg>
+          <svg id="bottle" class="bt" viewBox="-6 -40 120 280" role="img" aria-label="Matching bottle"></svg>
+        </div>
+        <p class="nightnote" id="nightNote" data-i18n="nightNote" hidden></p>
+        <div class="combo">
+          <div>
+            <div class="combo-name" id="comboName"></div>
+            <div class="combo-sub" id="comboSub"></div>
+          </div>
+          <div class="price" id="price"></div>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-head"><span class="num">1</span><h3><span data-i18n="s1"></span><small data-i18n="s1sub"></small></h3></div>
+          <button class="btn small quizbtn" id="quizOpen" data-i18n="quizOpen"></button>
+          <div class="quiz" id="quiz" hidden>
+            <div class="q"><p data-i18n="q1"></p><div class="tabs" data-q="ride"></div></div>
+            <div class="q"><p data-i18n="q2"></p><div class="tabs" data-q="style"></div></div>
+            <div class="q"><p data-i18n="q3"></p><div class="tabs" data-q="hue"></div></div>
+            <div class="result" id="quizResult" hidden></div>
+            <div class="row"><button class="btn link" id="quizClose" data-i18n="quizClose"></button></div>
+          </div>
+          <div class="tabs" role="group" aria-label="Build style">
+            <button class="tab" data-g="classic" aria-pressed="true" data-i18n="tabClassic"></button>
+            <button class="tab" data-g="bold" aria-pressed="false" data-i18n="tabBold"></button>
+          </div>
+          <div class="presets" id="presets"></div>
+        </div>
+
+        <div class="step">
+          <div class="step-head"><span class="num">2</span><h3><span data-i18n="s2"></span><small data-i18n="s2sub"></small></h3></div>
+          <div class="chips" id="zones"></div>
+          <p class="hint" id="zoneHint"></p>
+          <div>
+            <p class="group-label" data-i18n="groupDark"></p>
+            <div class="swatches" id="swDark"></div>
+          </div>
+          <div>
+            <p class="group-label" data-i18n="groupBright"></p>
+            <div class="swatches" id="swBright"></div>
+          </div>
+          <div class="row">
+            <button class="btn small" id="shuffle" data-i18n="shuffle"></button>
+            <button class="btn link" id="reset" data-i18n="reset"></button>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-head"><span class="num">3</span><h3><span data-i18n="s3"></span><small data-i18n="s3sub"></small></h3></div>
+          <div class="sizes" id="sizes" role="group" aria-label="Jacket size"></div>
+          <button class="btn small quizbtn" id="guideOpen" data-i18n="guideOpen"></button>
+          <div class="guide" id="guide" hidden>
+            <div class="form-grid">
+              <label class="field"><span data-i18n="height"></span><input id="hIn" type="number" inputmode="numeric" min="130" max="210" value="170"></label>
+              <label class="field"><span data-i18n="chest"></span><input id="cIn" type="number" inputmode="numeric" min="70" max="150" value="100"><small data-i18n="chestTip"></small></label>
+            </div>
+            <div>
+              <p class="group-label" data-i18n="fit"></p>
+              <div class="tabs" id="fitTabs">
+                <button class="tab" data-fit="snug" aria-pressed="true" data-i18n="fitSnug"></button>
+                <button class="tab" data-fit="room" aria-pressed="false" data-i18n="fitRoom"></button>
+              </div>
+            </div>
+            <div class="result" id="sizeResult"></div>
+            <div class="chart-wrap"><table class="chart" id="chart"></table></div>
+            <p class="fine" data-i18n="chartNote"></p>
+          </div>
+          <a class="btn primary" href="#deals" data-i18n="toDeals"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DEALS ============ -->
+  <section class="sec" id="deals">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="dealEyebrow"></p>
+      <h2 data-i18n="dealTitle"></h2>
+      <p class="sub" data-i18n="dealSub"></p>
+    </div>
+    <div class="deals">
+      <div class="deal-left">
+        <div class="tiers" id="tiers" role="group" aria-label="Bundle"></div>
+        <div class="boxed" id="bottleOptions">
+          <p class="group-label" style="margin:0" data-i18n="yourBottle"></p>
+          <div class="tabs" role="group" aria-label="Bottle style">
+            <button class="tab bstyle" data-s="bottle" aria-pressed="true" data-i18n="styleBottle"></button>
+            <button class="tab bstyle" data-s="tumbler" aria-pressed="false" data-i18n="styleTumbler"></button>
+          </div>
+          <div class="bottle-grid">
+            <label class="field"><span data-i18n="bSize"></span><select id="bSize"></select></label>
+            <label class="field"><span data-i18n="bLid"></span><select id="bLid"></select></label>
+            <label class="field"><span data-i18n="bColor"></span><select id="bColor"></select></label>
+            <label class="field"><span data-i18n="bLidColor"></span><select id="bLidColor"></select></label>
+          </div>
+          <div class="row">
+            <button class="btn small" id="matchJacket" data-i18n="matchJ"></button>
+            <button class="btn small" id="matchBottle" data-i18n="matchB"></button>
+          </div>
+        </div>
+        <div class="boxed">
+          <p class="group-label" style="margin:0" data-i18n="shareLabel"></p>
+          <div class="row">
+            <button class="btn small" id="save" data-i18n="save"></button>
+            <button class="btn small" id="copy" data-i18n="copy"></button>
+            <button class="btn small" id="cardBtn" data-i18n="cardBtn"></button>
+          </div>
+          <div id="cardWrap" hidden>
+            <img id="cardImg" alt="Aquacool build card" style="width:100%;max-width:300px;border-radius:14px;border:1px solid var(--line)">
+            <p class="hint" style="margin-top:8px" data-i18n="cardHint"></p>
+          </div>
+          <div>
+            <p class="group-label" data-i18n="savedLabel"></p>
+            <div class="chips" id="saved"></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="order" aria-labelledby="orderTitle">
+        <h3 id="orderTitle" data-i18n="orderTitle"></h3>
+        <div class="deal-vis stagebg" id="dealVis"></div>
+        <dl class="lines" id="orderLines"></dl>
+        <div class="total"><span data-i18n="total"></span><strong id="orderTotal"></strong></div>
+        <button class="btn primary big" id="buyNow" data-i18n="buyNow"></button>
+        <p class="paynote" data-i18n="payNote"></p>
+        <a class="btn link" href="#design" data-i18n="editBuild"></a>
+      </aside>
+    </div>
+  </section>
+
+  </div>
+
+  <div class="panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" hidden>
+  <!-- ============ HERO ============ -->
+  <section class="hero first" id="top">
+    <div>
+      <p class="eyebrow" data-i18n="heroEyebrow"></p>
+      <h1>Stay cool, stay <span class="pill">fresh</span>.</h1>
+      <p class="lede" data-i18n="heroLede"></p>
+      <ul class="facts">
+        <li data-i18n="fact1"></li><li data-i18n="fact2"></li><li data-i18n="fact3"></li><li data-i18n="fact4"></li>
+      </ul>
+      <div class="row">
+        <a class="btn primary" href="#design" data-i18n="ctaDesign"></a>
+        <a class="btn" href="#deals" data-i18n="ctaBuy"></a>
+      </div>
+    </div>
+    <div class="hero-vis stagebg">
+      <div class="pair" id="heroPair"></div>
+      <div class="cap" id="heroCap"></div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCT ============ -->
+  <section class="sec" id="product">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="prodEyebrow"></p>
+      <h2 data-i18n="prodTitle"></h2>
+      <p class="sub" data-i18n="prodSub"></p>
+    </div>
+    <div class="layers-wrap">
+      <div class="layer-vis stagebg">
+        <svg id="layerSvg" viewBox="0 0 400 330" role="img" aria-label="Jacket layer cross-section">
+          <defs>
+            <pattern id="pGrain" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" fill-opacity=".18"/><circle cx="6.5" cy="6" r=".9" fill="#000" fill-opacity=".25"/></pattern>
+            <pattern id="pHex" width="14" height="12" patternUnits="userSpaceOnUse"><path d="M3.5,0 L10.5,0 L14,6 L10.5,12 L3.5,12 L0,6 Z" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1"/></pattern>
+            <pattern id="pGel" width="22" height="16" patternUnits="userSpaceOnUse"><ellipse cx="7" cy="6" rx="5" ry="3" fill="#fff" fill-opacity=".35"/><ellipse cx="17" cy="13" rx="3" ry="2" fill="#fff" fill-opacity=".25"/></pattern>
+            <pattern id="pMesh" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0,0 L6,6 M6,0 L0,6" stroke="#000" stroke-opacity=".28" stroke-width=".8"/></pattern>
+          </defs>
+          <g id="slabs"></g>
+          <g stroke="#E8452F" stroke-width="5" stroke-linecap="round" fill="none" opacity=".85">
+            <path d="M165,14 v30 m-10,-11 l10,11 l10,-11"/><path d="M235,14 v30 m-10,-11 l10,11 l10,-11"/>
+          </g>
+        </svg>
+      </div>
+      <div class="layer-list" id="layerList"></div>
+    </div>
+
+    <div class="features" id="features"></div>
+
+    <div class="compare">
+      <h3 data-i18n="cmpTitle"></h3>
+      <p class="sub2" data-i18n="cmpSub"></p>
+      <div class="compare-body">
+        <div class="heatfig">
+          <svg viewBox="0 0 400 420" aria-hidden="true"><path id="heatReg" class="o" d="M140,112 C104,116 86,134 78,170 L43,342 L90,350 L126,206 L130,208 L126,392 Q200,402 274,392 L270,208 L274,206 L310,350 L357,342 L322,170 C314,134 296,116 260,112 L234,106 Q200,122 166,106 Z"/></svg>
+          <div class="heatlabel" data-i18n="regular"></div>
+          <div class="temp" id="tempReg"></div>
+        </div>
+        <div class="heatfig">
+          <svg viewBox="0 0 400 420" aria-hidden="true"><path id="heatAqua" class="o" d="M140,112 C104,116 86,134 78,170 L43,342 L90,350 L126,206 L130,208 L126,392 Q200,402 274,392 L270,208 L274,206 L310,350 L357,342 L322,170 C314,134 296,116 260,112 L234,106 Q200,122 166,106 Z"/></svg>
+          <div class="heatlabel">Aquacool</div>
+          <div class="temp" id="tempAqua"></div>
+        </div>
+        <div class="compare-ctrl">
+          <label for="minutes" class="field"><span><span data-i18n="timeLabel"></span> <strong id="minLabel"></strong></span></label>
+          <input type="range" id="minutes" min="0" max="45" step="1" value="15">
+          <div class="scale"><span>0 min</span><span>45 min</span></div>
+          <div class="diff" id="diff"></div>
+          <div class="legend"><span data-i18n="cool"></span><i></i><span data-i18n="hot"></span></div>
+          <p class="fine" data-i18n="fine"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORD OF MOUTH ============ -->
+  <section class="sec" id="riders">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="womEyebrow"></p>
+      <h2 data-i18n="womTitle"></h2>
+      <p class="sub" data-i18n="womSub"></p>
+    </div>
+    <div class="quotes">
+      <figure class="quote"><span class="status soon" data-i18n="sampleTag"></span><blockquote data-i18n="q1t"></blockquote><figcaption data-i18n="q1w"></figcaption></figure>
+      <figure class="quote"><span class="status soon" data-i18n="sampleTag"></span><blockquote data-i18n="q2t"></blockquote><figcaption data-i18n="q2w"></figcaption></figure>
+      <figure class="quote"><span class="status soon" data-i18n="sampleTag"></span><blockquote data-i18n="q3t"></blockquote><figcaption data-i18n="q3w"></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ CAMPAIGN NOTES (instructor) ============ -->
+  <details class="notes">
+    <summary>Campaign notes and rationale</summary>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Execution</span>
+        <h3>Digital marketing: an interactive product site</h3>
+        <p>The site has three tabs. <strong>Design your jacket</strong> is the main feature: riders pick Aquaflask colors, find their size, choose a bundle and buy. <strong>About Aquacool</strong> tells the brand story: how the cooling layers work, the heat comparison, and rider word of mouth. <strong>Events &amp; Stores</strong> covers Ride and Try at moto conventions (February and May 2027), mall pop-up booths during the March–April hot season, and where to buy all year.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Message</span>
+        <h3>"We keep your drinks cool. Now it's your turn."</h3>
+        <p>Aquaflask already owns "cold" in people's minds. Aquacool stretches that promise from the bottle to the rider: stay cool, stay fresh.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Target market</span>
+        <h3>Gen X and Millennial urban riders</h3>
+        <p>Riders who need a jacket for sun and road protection but hate how hot and sticky regular riding jackets get in Philippine traffic.</p>
+      </div>
+      <div class="card wide">
+        <span class="tag">Rationale: the page follows AIDA</span>
+        <h3>Each section moves the rider one step closer to buying</h3>
+        <ul>
+          <li><strong>Attention (hero):</strong> the familiar Aquaflask "cold" promise and the tagline, with the rider's own jacket on screen.</li>
+          <li><strong>Interest (product):</strong> the four-layer cross-section, feature cards and the heat slider explain the technology and prove the benefit visually.</li>
+          <li><strong>Desire (design):</strong> riders build a jacket in Aquaflask colors. The quiz, classic dark builds and size guide make it easy for every age group, and people value what they help create.</li>
+          <li><strong>Action (deals):</strong> bundle tiers with visible savings, a live order summary and a Buy now button that follows the rider down the page.</li>
+          <li><strong>Distribution (Place):</strong> pre-orders on the Aquacool website (the only channel for custom colors), the official Aquaflask website and its official Shopee and Lazada stores, and selected Aquaflask stores at launch, then partner motorcycle gear shops. Online reaches riders where they research and buy on payday; Aquaflask stores use existing foot traffic and the bottle bundle; moto shops put Aquacool next to Duhan and Komine.</li>
+          <li><strong>Event marketing: Ride and Try ("Feel the difference. Beat the heat."):</strong> booths at motorcycle conventions with a try-on area, product comparison, demo area, Cooling Challenge and supervised test rides, turning an unfamiliar benefit into something riders feel. The website supports it with test-ride registration and a word-of-mouth section for vlogger and rider feedback. KPIs: trial registrations, earned media reach and mentions, early-access sign-ups, and cooling satisfaction ratings.</li>
+          <li><strong>Trial (pop-up booths):</strong> booths at six Metro Manila malls offer try-ons and a live heat test, removing the last doubt about buying riding gear online.</li>
+          <li><strong>Material choice:</strong> PU leather keeps Aquacool at an accessible price, is lighter and easier to clean than cowhide, and holds bright Aquaflask colors well, matching the parent brand's "affordable quality" position.</li>
+          <li><strong>Pricing:</strong> the team's ₱2,800–3,000 range becomes ₱2,800 for ready builds and ₱3,000 for custom colors. The small premium for personalization keeps the entry price low while rewarding riders who use the main feature.</li>
+          <li><strong>Accessibility:</strong> the English/Filipino toggle and Night view (showing the reflective trim) speak to the rider's real language and commute.</li>
+          <li><strong>Word of mouth:</strong> the downloadable build card and share caption with #StayCoolStayFresh turn customers into promoters in rider groups.</li>
+        </ul>
+      </div>
+      <div class="card wide">
+        <span class="tag">Where it fits in the customer journey</span>
+        <ol>
+          <li><strong>Awareness:</strong> "Beyond the Bottle" teaser ads point to this site.</li>
+          <li><strong>Introduction:</strong> moto-vloggers review the jacket after Ride and Try test rides, and riders share their build cards.</li>
+          <li><strong>Trial:</strong> Ride and Try booths at motorcycle conventions (try-on, Cooling Challenge, supervised test ride) plus mall pop-up booths.</li>
+          <li><strong>Conversion:</strong> pre-orders and jacket + Aquaflask bundles through the Buy now flow.</li>
+          <li><strong>Retention:</strong> replacement gel packs offered in the colors of the rider's build.</li>
+        </ol>
+      </div>
+    </div>
+  </details>
+
+  </div>
+
+  <div class="panel" id="panel-events" role="tabpanel" aria-labelledby="tab-events" hidden>
+  <!-- ============ BOOTHS ============ -->
+  <section class="sec first" id="booths">
+    <div class="sec-head">
+      <p class="eyebrow" data-i18n="boothEyebrow"></p>
+      <h2 data-i18n="findTitle"></h2>
+      <p class="sub" data-i18n="findSub"></p>
+    </div>
+
+    <!-- Ride and Try -->
+    <div class="rat">
+      <div class="rat-head">
+        <h3 data-i18n="ratTitle"></h3>
+        <p class="rat-tag">Feel the difference. Beat the heat.</p>
+        <p class="sub" data-i18n="ratSub"></p>
+      </div>
+      <div class="rat-grid">
+        <div class="events">
+          <article class="booth next">
+            <span class="status next" data-i18n="evTag"></span>
+            <div class="when" data-i18n="ev1d"></div>
+            <div class="where">NFMCP National Convention</div>
+            <div class="spot" data-i18n="ev1p"></div>
+            <div class="tags"><span data-i18n="tg_try"></span><span data-i18n="tg_cc"></span><span data-i18n="tg_ride"></span></div>
+          </article>
+          <article class="booth">
+            <span class="status soon" data-i18n="evTag"></span>
+            <div class="when" data-i18n="ev2d"></div>
+            <div class="where">Laguna Motofest</div>
+            <div class="spot" data-i18n="ev2p"></div>
+            <div class="tags"><span data-i18n="tg_try"></span><span data-i18n="tg_cc"></span><span data-i18n="tg_ride"></span></div>
+          </article>
+        </div>
+        <div class="zones-card">
+          <h4 data-i18n="zTitle"></h4>
+          <ol class="zlist">
+            <li><strong data-i18n="z1t"></strong><span data-i18n="z1d"></span></li>
+            <li><strong data-i18n="z2t"></strong><span data-i18n="z2d"></span></li>
+            <li><strong data-i18n="z3t"></strong><span data-i18n="z3d"></span></li>
+            <li><strong data-i18n="z4t"></strong><span data-i18n="z4d"></span></li>
+            <li><strong data-i18n="z5t"></strong><span data-i18n="z5d"></span></li>
+          </ol>
+        </div>
+      </div>
+      <form class="regform" id="regForm" novalidate>
+        <div class="reg-head">
+          <h4 data-i18n="regTitle"></h4>
+          <p data-i18n="regSub"></p>
+        </div>
+        <div class="form-grid">
+          <label class="field"><span data-i18n="rName"></span><input id="rName" type="text" autocomplete="off" required></label>
+          <label class="field"><span data-i18n="rEvent"></span><select id="rEvent"></select></label>
+          <label class="field"><span data-i18n="rBike"></span><select id="rBike"></select></label>
+        </div>
+        <label class="check"><input type="checkbox" id="rEarly" checked> <span data-i18n="rEarly"></span></label>
+        <div class="row">
+          <button class="btn primary" type="submit" data-i18n="rSubmit"></button>
+          <span class="fine" data-i18n="rNote"></span>
+        </div>
+        <div class="result" id="regResult" hidden></div>
+      </form>
+    </div>
+
+    <!-- Mall pop-ups -->
+    <div class="buy-head">
+      <h3 data-i18n="mallTitle"></h3>
+      <p class="sub" data-i18n="boothSub"></p>
+    </div>
+    <div class="tabs" id="regions" role="group" aria-label="Area"></div>
+    <div class="booths" id="boothList"></div>
+    <div class="buy-head">
+      <h3 data-i18n="wtbTitle"></h3>
+      <p class="sub" data-i18n="wtbSub"></p>
+    </div>
+    <div class="channels">
+      <article class="channel feature">
+        <span class="status now" data-i18n="chNow"></span>
+        <h4 data-i18n="ch1t"></h4>
+        <p data-i18n="ch1d"></p>
+        <a class="btn primary small" href="#design" data-i18n="ch1cta"></a>
+      </article>
+      <article class="channel">
+        <span class="status soon" data-i18n="chLaunch"></span>
+        <h4 data-i18n="ch2t"></h4>
+        <p data-i18n="ch2d"></p>
+        <p class="tip" data-i18n="ch2tip"></p>
+      </article>
+      <article class="channel">
+        <span class="status soon" data-i18n="chLaunch"></span>
+        <h4 data-i18n="ch3t"></h4>
+        <p data-i18n="ch3d"></p>
+      </article>
+      <article class="channel">
+        <span class="status later" data-i18n="chLater"></span>
+        <h4 data-i18n="ch4t"></h4>
+        <p data-i18n="ch4d"></p>
+      </article>
+    </div>
+  </section>
+
+  </div>
+
+  <footer data-i18n="footer"></footer>
+</div>
+
+<div class="buybar" id="buybar" aria-hidden="true">
+  <div class="in">
+    <div class="bb-text"><div class="bb-name" id="bbName"></div><div class="bb-price" id="bbPrice"></div></div>
+    <a class="btn small" href="#deals" data-i18n="seeDeals" tabindex="-1"></a>
+    <button class="btn primary small" id="bbBuy" data-i18n="buyNow" tabindex="-1"></button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<div class="modal-bg" id="modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <h3 id="mTitle" data-i18n="mTitle"></h3>
+    <p class="hint" data-i18n="mNote"></p>
+    <dl class="lines" id="mLines"></dl>
+    <div class="total"><span data-i18n="total"></span><strong id="mTotal"></strong></div>
+    <div class="pay" role="radiogroup" aria-labelledby="payLabel">
+      <p class="group-label" id="payLabel" style="margin:0" data-i18n="payLabel"></p>
+      <label><input type="radio" name="pay" value="pay_gcash" id="pay1" checked><span data-i18n="pay_gcash"></span></label>
+      <label><input type="radio" name="pay" value="pay_card" id="pay2"><span data-i18n="pay_card"></span></label>
+      <label><input type="radio" name="pay" value="pay_cod" id="pay3"><span data-i18n="pay_cod"></span></label>
+      <label><input type="radio" name="pay" value="pay_booth" id="pay4"><span data-i18n="pay_booth"></span></label>
+    </div>
+    <div class="row">
+      <button class="btn primary" id="placeOrder" data-i18n="placeOrder"></button>
+      <button class="btn" id="mClose" data-i18n="mBack"></button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ================= TEXT (English / Filipino) =================
+const T = {
+en:{
+  concept:"<strong>Student concept.</strong> Aquacool is a proposed brand extension made for a marketing class project. It is not an official Aquaflask product or website.",
+  day:"Day", night:"Night", front:"Front", back:"Back",
+  tabBuild:"Design your jacket", tabAbout:"About Aquacool", tabEvents:"Events & Stores", tabBuildS:"Design", tabAboutS:"About", tabEventsS:"Events",
+  lnDesign:"Colors", readyBuild:"Ready build", customBuild:"Custom colors (+₱200)",
+  navProduct:"Product", navDesign:"Design", navDeals:"Deals", navBooths:"Find us",
+  heroEyebrow:"New from Aquaflask (concept)",
+  heroLede:"We keep your drinks cool. Now it's your turn. Aquacool is a PU leather riding jacket with built-in cooling, made for hot Philippine commutes.",
+  fact1:"PU leather shell", fact2:"PCM cooling panels", fact3:"Removable gel packs", fact4:"From ₱2,800",
+  ctaDesign:"Design yours", ctaBuy:"Buy now",
+  heroCap:"Shown: <strong>{n}</strong>. Tap the jacket to customize it.",
+  prodEyebrow:"The product", prodTitle:"Four layers of cool",
+  prodSub:"Riding jackets protect you but trap heat. Aquacool adds three cooling layers under a tough PU leather shell. Tap a layer to see what it does. The colors follow your build.",
+  L1t:"PU leather outer shell", L1d:"Lightweight, easy to wipe clean, and made to hold bright Aquaflask colors. Shields you from sun and wind, with adjustable zipper vents for airflow.",
+  L2t:"PCM thermal-regulation layer", L2d:"Phase-change material soaks up extra body heat when you get too warm, keeping your temperature steady.",
+  L3t:"Removable gel pocket zone", L3d:"Holds two pre-cooled gel packs on your upper back for direct, localized cooling.",
+  L4t:"Moisture-wicking PET mesh lining", L4d:"Breathable and comfortable against your skin. Pulls sweat away so the jacket doesn't stick.",
+  featGel:"Removable gel pockets", featGelD:"Two gel packs sit on your upper back, where heat builds up most.",
+  gel1:"Chill the packs in the fridge or freezer.", gel2:"Slide them into the back pockets.", gel3:"Swap in a fresh pair on long rides.",
+  featPcm:"PCM cooling panels", featPcmD:"On the upper chest, sides and back, away from the armor zones, so you stay cool without losing protection.",
+  featVent:"Rear zipper vents", featVentD:"Unzip the two back vents to let warm, humid air escape while you ride.",
+  featArmor:"Shoulder and elbow armor", featArmorD:"Impact protection where riders need it most, built into the jacket.",
+  featReflect:"Reflective trim", featReflectD:"Trim, shoulder marks and vents catch headlights after dark. Switch to Night at the top to see it.",
+  cmpTitle:"Feel the difference", cmpSub:"Drag the slider to see how warm it gets inside each jacket the longer you ride in the midday sun.",
+  regular:"Regular leather jacket", timeLabel:"Time riding in the sun:", mins:"{m} minutes", min1:"1 minute",
+  diff:"Aquacool stays {d}°C cooler", diff0:"Both start the same. Now start riding.", cool:"Cool", hot:"Hot",
+  fine:"Illustrative concept figures based on how PCM panels and gel packs absorb heat. Not lab test results.",
+  desEyebrow:"Design", desTitle:"Make it yours", desSub:"Start from a ready build, change any part in Aquaflask colors, then pick your size.",
+  tip:"Tip: tap the jacket to pick a part",
+  nightNote:"Night view: the reflective trim lights up under headlights.",
+  s1:"Pick a ready build", s1sub:"The fastest way to start, from ₱2,800. You can change any part in step 2.",
+  quizOpen:"Not sure? Take the 3-question quiz", quizClose:"Close quiz",
+  q1:"When do you usually ride?", q2:"What's your style?", q3:"Which Aquaflask colors do you usually pick?",
+  o_commute:"Daily commute", o_weekend:"Long weekend rides", o_night:"Night rides after work",
+  o_classic:"Classic and low-key", o_bold:"Bright and stand-out",
+  o_greys:"Black and greys", o_blues:"Blues and teals", o_greens:"Greens", o_pinks:"Pinks and purples", o_warm:"Orange, coral or yellow",
+  match:"Your match:", useBuild:"Use this build",
+  n_commute:"For daily commutes, we picked the Rider Bundle so you get a matching bottle for the road.",
+  n_weekend:"For long rides, we picked the Cool Season Bundle with spare gel packs.",
+  n_night:"Since you ride at night, we switched on Night view so you can see the reflective trim.",
+  tabClassic:"Classic & dark", tabBold:"Bright & bold",
+  s2:"Change a part (optional)", s2sub:"Choose a part, then tap a color. Custom colors add ₱200.",
+  groupDark:"Classic darks", groupBright:"Signature brights",
+  shuffle:"Surprise me", reset:"Start over", backNote:"(shown on the back view)",
+  s3:"Pick your size", s3sub:"Tap your size. Not sure? Use the size guide.",
+  guideOpen:"Find my size", guideClose:"Hide size guide",
+  height:"Height (cm)", chest:"Chest (cm)", chestTip:"Measure around the widest part of your chest.",
+  fit:"How do you like it to fit?", fitSnug:"Snug, for summer", fitRoom:"Roomy, for layers underneath",
+  recommend:"We recommend size {s}.", tall:" You're tall, so check the sleeve length when you try it on.",
+  outRange:"That chest size is outside our chart. Visit a pop-up booth for a fitting.", badInput:"Enter your height and chest size in centimeters.",
+  useSize:"Use size {s}", chartSize:"Size", chartChest:"Chest (cm)", chartNote:"Proposed size chart for the concept.",
+  toDeals:"Next: see deals",
+  dealEyebrow:"Deals", dealTitle:"Pick your bundle", dealSub:"Bundles save you money, and the bottle comes in your build's colors.",
+  t_jacket:"Aquacool jacket", t_rider:"Jacket + matching bottle", t_season:"Jacket + bottle + spare gel pack set",
+  saveAmt:"Save ₱{n}", popular:"Most popular", wasPrice:"₱{n} separately",
+  yourBottle:"Your bottle", styleBottle:"Wide-mouth bottle", styleTumbler:"Tumbler with handle",
+  bSize:"Size", bLid:"Lid", bColor:"Bottle color", bLidColor:"Lid color",
+  matchJ:"Match bottle to my jacket", matchB:"Match jacket to my bottle",
+  shareLabel:"Save and share", save:"Save build", copy:"Copy to share", cardBtn:"Download build card", making:"Making your card…",
+  cardHint:"Post it in your rider group with #StayCoolStayFresh. If the download didn't start, press and hold (or right-click) the image to save it.",
+  savedLabel:"My saved builds", savedEmpty:"Builds you save will show up here.",
+  orderTitle:"Your order", lnBuild:"Build", lnSize:"Size", lnBundle:"Bundle", lnBottle:"Bottle", lnSave:"You save", total:"Total",
+  buyNow:"Buy now", seeDeals:"See deals",
+  payNote:"Pay with GCash, credit card (0% installment for 3 or 6 months), or cash on delivery. Free delivery nationwide.",
+  editBuild:"Edit my design",
+  mTitle:"Checkout (demo)", mNote:"This is a concept demo. No payment is taken.",
+  payLabel:"Payment method", pay_gcash:"GCash", pay_card:"Credit card, 0% installment", pay_cod:"Cash on delivery", pay_booth:"Pay and pick up at a pop-up booth",
+  placeOrder:"Place order", mBack:"Back",
+  toastOrdered:"Order placed (demo): {b}, size {s}, {t} for ₱{p} via {pay}. Thank you for riding cool!",
+  boothEyebrow:"Find us", boothTitle:"Pop-up booths near you",
+  findTitle:"Where to find us", findSub:"Try Aquacool in person before you buy: ride it at a moto convention, or try it on at a mall near you.",
+  ratTitle:"Ride and Try at moto conventions", ratSub:"Try the jacket on, take the Cooling Challenge, then test it on a supervised ride, out in the real heat.",
+  evTag:"Proposed partner event", ev1d:"February 2027", ev1p:"National motorcycle club convention · Venue to be announced", ev2d:"May 2027", ev2p:"Gamuda Gardens, Laguna · Test-ride route on site",
+  tg_cc:"Cooling Challenge", tg_ride:"Supervised test ride",
+  zTitle:"What happens at the booth",
+  z1t:"Product display and try-on", z1d:"Check the fit, the armor and the materials up close.",
+  z2t:"Product comparison", z2d:"A regular riding jacket next to Aquacool, side by side.",
+  z3t:"Demo area", z3d:"See how the gel packs, PCM panels and vents work together.",
+  z4t:"Cooling Challenge", z4d:"Wear both jackets and feel which one stays cooler.",
+  z5t:"Supervised test ride", z5d:"Ride outdoors with a guide, where the booth's aircon can't help. Then share your feedback.",
+  regTitle:"Register for a test ride", regSub:"Save your slot before the event. Registered riders get early-access deals.",
+  rName:"Your name", rEvent:"Event", rBike:"Your motorcycle", rEarly:"Send me early-access deals", rSubmit:"Register for a test ride",
+  rNote:"Demo form for the concept. Nothing is sent.", rAnyMall:"Any mall pop-up booth", rOther:"Other",
+  rNeedName:"Enter your name so we can save your slot.",
+  rDone:"You're registered (demo), {n}! See you at {e}. Bring your helmet and driver's license for the test ride.",
+  mallTitle:"Mall pop-up booths",
+  womEyebrow:"Word of mouth", womTitle:"Turning rides into conversations",
+  womSub:"After every test ride, riders and moto-vloggers share their experience. These sample quotes show the kind of feedback Ride and Try aims to collect. They are not real reviews.",
+  sampleTag:"Sample quote",
+  q1t:"\u201cStuck on EDSA for 40 minutes and my back stayed dry. The gel packs really make a difference.\u201d", q1w:"Sample · daily commuter on a Honda Click 125",
+  q2t:"\u201cI thought it was just for looks, but it has shoulder and elbow armor. Sulit for \u20b12,800.\u201d", q2w:"Sample · moto-vlogger first impression after a test ride",
+  q3t:"\u201cI matched it to my Aquaflask. So many people asked where I got it.\u201d", q3w:"Sample · rider at a mall pop-up booth",
+  boothSub:"Try on Aquacool, feel the gel packs, and watch the heat test live. Proposed schedule for the concept.",
+  r_all:"All", r_north:"North", r_central:"Central", r_south:"South",
+  tg_try:"Try-on", tg_heat:"Live heat test", tg_chill:"Gel pack chilling station",
+  st_next:"Next stop", st_now:"Happening now", st_soon:"Upcoming", st_done:"Ended",
+  hours:"10 AM – 9 PM", openMap:"Open in Google Maps",
+  wtbTitle:"Where to buy, all year round", wtbSub:"The pop-up booths are for trying it on. Here's where you can buy Aquacool anytime.",
+  chNow:"Pre-order now", chLaunch:"At launch", chLater:"Coming soon",
+  ch1t:"Aquacool website", ch1d:"The only place to design your own colors. Pre-order a ready build or a custom one, with bottle bundles.", ch1cta:"Design yours",
+  ch2t:"Official online stores", ch2d:"Aquaflask's official website, plus the official Aquaflask stores on Shopee and Lazada. Great for payday sales.", ch2tip:"Look for the official store badge so you get a genuine jacket.",
+  ch3t:"Selected Aquaflask stores", ch3d:"Try it on, see the colors in person, and pick up a matching bottle in the same trip.",
+  ch4t:"Partner moto gear shops", ch4d:"Find Aquacool at partner motorcycle gear shops, right next to the helmets and gloves you already shop for.",
+  zone_shell:"PU leather body", zone_sleeves:"Sleeves", zone_pcm:"Cooling panels", zone_gel:"Gel pockets", zone_armor:"Armor pads", zone_accent:"Trim & zips",
+  hint_shell:"PU leather outer shell. Lightweight and easy to wipe clean, with zipper vents for airflow.",
+  hint_sleeves:"PU leather sleeves lined with moisture-wicking PET mesh that stays comfortable on long rides.",
+  hint_pcm:"PCM thermal panels on the chest, sides and back soak up extra body heat.",
+  hint_gel:"Two removable gel pockets on the upper back. Chill them in the fridge, then slip them in.",
+  hint_armor:"Shoulder and elbow armor for impact protection.",
+  hint_accent:"Collar trim, cuffs, shoulder marks, waist tabs and back zipper vents. Reflective at night.",
+  sub:"{shell} leather · {pcm} cooling panels · size {size}", subBottle:" · {c} {s} {st}",
+  priceNote:"{t} · proposed price", custom:"Custom: {a} & {b}",
+  toastLoaded:"{n} loaded. Change any part, or skip ahead to deals.", toastRandom:"New random build. Tap any part to adjust it.",
+  toastReset:"Back to the Original Black build.", toastSaved:"Saved. You'll find it under My saved builds.",
+  toastCopied:"Copied! Paste it into your post or group chat.",
+  toastMatchB:"Cooling panels and trim now match your {c} bottle.", toastMatchJ:"Bottle set to {c} with a {l} lid to match your jacket.",
+  toastCard:"Build card ready. Check your downloads.", toastCardFail:"Couldn't make the card in this browser. Try Chrome or Safari.",
+  toastSize:"Size {s} selected.", toastTier:"{t} selected.",
+  bottleWord:"bottle", tumblerWord:"tumbler", withLid:"{c} {s} {st} with {l} {lid}", noBottle:"Not included",
+  copyText:"My Aquacool build: {parts}, size {size}{bottle}. Stay cool, stay fresh. #StayCoolStayFresh", copyBottle:", matched with a {b}",
+  cardMy:"My build:", cardSize:"Size", cardBottle:"Bottle", cardFoot:"Student concept for a marketing class · not an official Aquaflask product",
+  footer:"Aquacool is a student concept for a marketing class. Aquaflask is a trademark of its owner; this page is not affiliated with or endorsed by Aquaflask.",
+  d_original:"All-black leather with aqua panels. Our launch look.",
+  d_gunmetal:"Grey and charcoal with deep teal panels. Low-key and modern.",
+  d_burgundy:"Rich burgundy with black sleeves. A classic café-racer feel.",
+  d_espresso:"Warm brown leather with stone trim. Vintage and easy to wear.",
+  d_navy:"Navy and slate with subtle aqua trim. Clean for work commutes.",
+  d_olive:"Olive and black with forest panels. Rugged and outdoorsy.",
+  d_sunset:"Coral and tangerine with sunshine trim.",
+  d_mint:"Fresh mint with navy armor and aqua panels.",
+  d_lilac:"Lilac leather with bubblegum panels.",
+  d_lime:"Black leather with high-visibility lime accents.",
+  d_cobalt:"Bold cobalt with sky panels and black armor."
+},
+fil:{
+  concept:"<strong>Konsepto ng estudyante.</strong> Ang Aquacool ay isang proposed brand extension para sa isang marketing class project. Hindi ito opisyal na produkto o website ng Aquaflask.",
+  day:"Araw", night:"Gabi", front:"Harap", back:"Likod",
+  tabBuild:"Idisenyo ang jacket mo", tabAbout:"Tungkol sa Aquacool", tabEvents:"Events at Stores", tabBuildS:"Disenyo", tabAboutS:"Tungkol", tabEventsS:"Events",
+  lnDesign:"Kulay", readyBuild:"Ready build", customBuild:"Custom na kulay (+₱200)",
+  navProduct:"Produkto", navDesign:"Disenyo", navDeals:"Deals", navBooths:"Hanapin kami",
+  heroEyebrow:"Bago mula sa Aquaflask (konsepto)",
+  heroLede:"Pinapanatili naming malamig ang inumin mo. Ngayon, ikaw naman. Ang Aquacool ay PU leather riding jacket na may built-in cooling, gawa para sa mainit na biyahe sa Pilipinas.",
+  fact1:"PU leather shell", fact2:"PCM cooling panels", fact3:"Removable gel packs", fact4:"Mula ₱2,800",
+  ctaDesign:"Idisenyo ang sa'yo", ctaBuy:"Bilhin na",
+  heroCap:"Nakikita: <strong>{n}</strong>. I-tap ang jacket para i-customize.",
+  prodEyebrow:"Ang produkto", prodTitle:"Apat na layer ng lamig",
+  prodSub:"Protektado ka sa riding jacket pero kulong ang init. Nagdagdag ang Aquacool ng tatlong cooling layer sa ilalim ng matibay na PU leather shell. I-tap ang layer para makita ang ginagawa nito. Sumusunod ang kulay sa build mo.",
+  L1t:"PU leather na outer shell", L1d:"Magaan, madaling punasan, at kayang humawak ng matingkad na kulay ng Aquaflask. Proteksyon sa araw at hangin, may adjustable zipper vents para dumaloy ang hangin.",
+  L2t:"PCM thermal-regulation layer", L2d:"Sinisipsip ng phase-change material ang sobrang init ng katawan kapag naiinitan ka, para steady ang temperatura mo.",
+  L3t:"Removable gel pocket zone", L3d:"Dito nakalagay ang dalawang pinalamig na gel pack sa itaas ng likod para direktang lamig.",
+  L4t:"Moisture-wicking PET mesh lining", L4d:"Presko at komportable sa balat. Hinihigop ang pawis para hindi dumikit ang jacket.",
+  featGel:"Removable gel pockets", featGelD:"Dalawang gel pack sa itaas ng likod, kung saan pinakamainit.",
+  gel1:"Palamigin ang packs sa ref o freezer.", gel2:"Isingit sa mga bulsa sa likod.", gel3:"Palitan ng bago sa long rides.",
+  featPcm:"PCM cooling panels", featPcmD:"Nasa itaas ng dibdib, gilid at likod, malayo sa armor, kaya malamig ka nang hindi nababawasan ang proteksyon.",
+  featVent:"Rear zipper vents", featVentD:"Buksan ang dalawang vent sa likod para lumabas ang mainit at maalinsangang hangin habang nagra-ride.",
+  featArmor:"Armor sa balikat at siko", featArmorD:"Proteksyon sa impact kung saan pinakakailangan ng rider, nakabaon sa jacket.",
+  featReflect:"Reflective trim", featReflectD:"Tumatama ang ilaw ng headlight sa trim, shoulder marks at vents kapag gabi. I-click ang Gabi sa itaas para makita.",
+  cmpTitle:"Ramdamin ang pagkakaiba", cmpSub:"I-drag ang slider para makita kung gaano kainit sa loob ng bawat jacket habang tumatagal ang ride mo sa tanghaling-tapat.",
+  regular:"Ordinaryong leather jacket", timeLabel:"Tagal ng ride sa ilalim ng araw:", mins:"{m} minuto", min1:"1 minuto",
+  diff:"Mas malamig ang Aquacool nang {d}°C", diff0:"Pareho sa simula. Simulan na ang ride.", cool:"Malamig", hot:"Mainit",
+  fine:"Halimbawang numero lang batay sa kung paano sumisipsip ng init ang PCM panels at gel packs. Hindi ito resulta ng lab test.",
+  desEyebrow:"Disenyo", desTitle:"Gawin mong sa'yo", desSub:"Magsimula sa ready build, palitan ang kahit anong parte gamit ang kulay ng Aquaflask, tapos piliin ang size mo.",
+  tip:"Tip: i-tap ang jacket para pumili ng parte",
+  nightNote:"Night view: umiilaw ang reflective trim kapag tinamaan ng headlight.",
+  s1:"Pumili ng ready build", s1sub:"Pinakamabilis na paraan, mula ₱2,800. Puwede mong palitan ang kahit anong parte sa step 2.",
+  quizOpen:"Hindi sigurado? Sagutan ang 3-tanong na quiz", quizClose:"Isara ang quiz",
+  q1:"Kailan ka madalas mag-ride?", q2:"Ano ang style mo?", q3:"Anong kulay ng Aquaflask ang madalas mong piliin?",
+  o_commute:"Araw-araw na biyahe", o_weekend:"Long ride tuwing weekend", o_night:"Gabi, pauwi galing trabaho",
+  o_classic:"Classic at simple", o_bold:"Makulay at agaw-pansin",
+  o_greys:"Itim at gray", o_blues:"Asul at teal", o_greens:"Berde", o_pinks:"Pink at purple", o_warm:"Orange, coral o dilaw",
+  match:"Bagay sa'yo:", useBuild:"Gamitin ang build na ito",
+  n_commute:"Para sa araw-araw na biyahe, pinili namin ang Rider Bundle para may katernong bottle ka sa daan.",
+  n_weekend:"Para sa long rides, pinili namin ang Cool Season Bundle na may extra gel packs.",
+  n_night:"Dahil gabi ka nagra-ride, binuksan namin ang Night view para makita mo ang reflective trim.",
+  tabClassic:"Classic at dark", tabBold:"Makulay at bold",
+  s2:"Palitan ang parte (optional)", s2sub:"Pumili ng parte, tapos i-tap ang kulay. Dagdag ₱200 ang custom na kulay.",
+  groupDark:"Mga dark na kulay", groupBright:"Mga matingkad na kulay",
+  shuffle:"Bahala ka na", reset:"Ulitin mula simula", backNote:"(makikita sa likod)",
+  s3:"Piliin ang size mo", s3sub:"I-tap ang size mo. Hindi sigurado? Gamitin ang size guide.",
+  guideOpen:"Hanapin ang size ko", guideClose:"Itago ang size guide",
+  height:"Tangkad (cm)", chest:"Sukat ng dibdib (cm)", chestTip:"Sukatin ang pinakamalapad na bahagi ng dibdib mo.",
+  fit:"Paano mo gusto ang fit?", fitSnug:"Sakto, pang-summer", fitRoom:"Maluwag, puwedeng may patong sa loob",
+  recommend:"Ang rekomendado namin: size {s}.", tall:" Matangkad ka, kaya i-check ang haba ng manggas kapag sinukat mo.",
+  outRange:"Wala sa chart namin ang sukat ng dibdib mo. Pumunta sa pop-up booth para sa fitting.", badInput:"Ilagay ang tangkad at sukat ng dibdib mo sa centimeters.",
+  useSize:"Gamitin ang size {s}", chartSize:"Size", chartChest:"Dibdib (cm)", chartNote:"Proposed na size chart para sa konsepto.",
+  toDeals:"Susunod: tingnan ang deals",
+  dealEyebrow:"Deals", dealTitle:"Piliin ang bundle mo", dealSub:"Mas tipid sa bundle, at terno pa ang bottle sa kulay ng build mo.",
+  t_jacket:"Aquacool jacket", t_rider:"Jacket + katernong bottle", t_season:"Jacket + bottle + extra na gel pack set",
+  saveAmt:"Tipid ₱{n}", popular:"Pinakasikat", wasPrice:"₱{n} kung hiwalay",
+  yourBottle:"Ang bottle mo", styleBottle:"Wide-mouth bottle", styleTumbler:"Tumbler na may hawakan",
+  bSize:"Size", bLid:"Takip", bColor:"Kulay ng bottle", bLidColor:"Kulay ng takip",
+  matchJ:"Iterno ang bottle sa jacket", matchB:"Iterno ang jacket sa bottle",
+  shareLabel:"I-save at i-share", save:"I-save ang build", copy:"Kopyahin para i-share", cardBtn:"I-download ang build card", making:"Ginagawa ang card mo…",
+  cardHint:"I-post sa rider group mo gamit ang #StayCoolStayFresh. Kung hindi nag-download, pindutin nang matagal (o i-right-click) ang image para i-save.",
+  savedLabel:"Mga na-save kong build", savedEmpty:"Lalabas dito ang mga build na na-save mo.",
+  orderTitle:"Ang order mo", lnBuild:"Build", lnSize:"Size", lnBundle:"Bundle", lnBottle:"Bottle", lnSave:"Natipid mo", total:"Kabuuan",
+  buyNow:"Bilhin na", seeDeals:"Tingnan ang deals",
+  payNote:"Magbayad gamit ang GCash, credit card (0% installment sa 3 o 6 na buwan), o cash on delivery. Libreng delivery sa buong bansa.",
+  editBuild:"Baguhin ang disenyo ko",
+  mTitle:"Checkout (demo)", mNote:"Demo lang ito ng konsepto. Walang totoong bayad na kukunin.",
+  payLabel:"Paraan ng pagbabayad", pay_gcash:"GCash", pay_card:"Credit card, 0% installment", pay_cod:"Cash on delivery", pay_booth:"Magbayad at kunin sa pop-up booth",
+  placeOrder:"I-place ang order", mBack:"Bumalik",
+  toastOrdered:"Na-place ang order (demo): {b}, size {s}, {t} sa halagang ₱{p} gamit ang {pay}. Salamat sa pag-ride nang cool!",
+  boothEyebrow:"Hanapin kami", boothTitle:"Mga pop-up booth na malapit sa'yo",
+  findTitle:"Saan kami makikita", findSub:"Subukan muna ang Aquacool bago bumili: i-test ride sa moto convention, o isukat sa mall na malapit sa'yo.",
+  ratTitle:"Ride and Try sa mga moto convention", ratSub:"Isukat ang jacket, sumali sa Cooling Challenge, tapos i-test ride ito nang may gabay, sa totoong init sa labas.",
+  evTag:"Proposed na partner event", ev1d:"Pebrero 2027", ev1p:"Pambansang convention ng mga motorcycle club · Iaanunsyo pa ang venue", ev2d:"Mayo 2027", ev2p:"Gamuda Gardens, Laguna · May test-ride route sa venue",
+  tg_cc:"Cooling Challenge", tg_ride:"Test ride na may gabay",
+  zTitle:"Ano'ng mangyayari sa booth",
+  z1t:"Product display at sukatan", z1d:"Tingnan nang malapitan ang fit, armor at materyales.",
+  z2t:"Product comparison", z2d:"Ordinaryong riding jacket katabi ng Aquacool.",
+  z3t:"Demo area", z3d:"Alamin kung paano nagtutulungan ang gel packs, PCM panels at vents.",
+  z4t:"Cooling Challenge", z4d:"Isuot ang dalawang jacket at ramdamin kung alin ang mas malamig.",
+  z5t:"Test ride na may gabay", z5d:"Mag-ride sa labas kasama ang guide, kung saan walang aircon ng booth. Tapos, ibahagi ang feedback mo.",
+  regTitle:"Mag-register para sa test ride", regSub:"I-reserve na ang slot mo bago ang event. May early-access deals ang mga naka-register.",
+  rName:"Pangalan mo", rEvent:"Event", rBike:"Motor mo", rEarly:"Padalhan ako ng early-access deals", rSubmit:"Mag-register para sa test ride",
+  rNote:"Demo form para sa konsepto. Walang ipapadala.", rAnyMall:"Kahit anong mall pop-up booth", rOther:"Iba pa",
+  rNeedName:"Ilagay ang pangalan mo para ma-save ang slot mo.",
+  rDone:"Registered ka na (demo), {n}! Kita tayo sa {e}. Dalhin ang helmet at driver's license mo para sa test ride.",
+  mallTitle:"Mga pop-up booth sa mall",
+  womEyebrow:"Word of mouth", womTitle:"Mula sa ride, nagiging kuwentuhan",
+  womSub:"Pagkatapos ng bawat test ride, ibinabahagi ng mga rider at moto-vlogger ang karanasan nila. Halimbawa lang ang mga quote na ito ng feedback na gustong makuha ng Ride and Try. Hindi ito totoong review.",
+  sampleTag:"Halimbawang quote",
+  q1t:"\u201cNa-stuck ako sa EDSA nang 40 minutes pero hindi basa ang likod ko. Iba talaga 'yung gel packs.\u201d", q1w:"Halimbawa · araw-araw na commuter na naka-Honda Click 125",
+  q2t:"\u201cAkala ko pang-porma lang, pero may armor pala sa balikat at siko. Sulit sa \u20b12,800.\u201d", q2w:"Halimbawa · first impression ng moto-vlogger pagkatapos ng test ride",
+  q3t:"\u201cTinerno ko sa Aquaflask ko 'yung kulay. Ang daming nagtanong kung saan ko nabili.\u201d", q3w:"Halimbawa · rider sa mall pop-up booth",
+  boothSub:"Isukat ang Aquacool, hawakan ang gel packs, at panoorin ang heat test nang live. Proposed na schedule para sa konsepto.",
+  r_all:"Lahat", r_north:"Hilaga", r_central:"Gitna", r_south:"Timog",
+  tg_try:"Sukatan", tg_heat:"Live na heat test", tg_chill:"Chilling station ng gel pack",
+  st_next:"Susunod na stop", st_now:"Nangyayari ngayon", st_soon:"Paparating", st_done:"Tapos na",
+  hours:"10 AM – 9 PM", openMap:"Buksan sa Google Maps",
+  wtbTitle:"Saan mabibili, buong taon", wtbSub:"Ang pop-up booths ay para masukat mo ito. Dito mo naman mabibili ang Aquacool kahit kailan.",
+  chNow:"Mag-pre-order na", chLaunch:"Sa launch", chLater:"Malapit na",
+  ch1t:"Aquacool website", ch1d:"Dito lang puwedeng idisenyo ang sarili mong kulay. Mag-pre-order ng ready build o custom, may bottle bundles pa.", ch1cta:"Idisenyo ang sa'yo",
+  ch2t:"Official online stores", ch2d:"Ang official website ng Aquaflask, at ang official Aquaflask stores sa Shopee at Lazada. Sulit tuwing payday sale.", ch2tip:"Hanapin ang official store badge para siguradong original ang jacket mo.",
+  ch3t:"Piling Aquaflask stores", ch3d:"Isukat, tingnan ang mga kulay nang personal, at bumili na rin ng katernong bottle.",
+  ch4t:"Partner na moto gear shops", ch4d:"Makikita ang Aquacool sa partner na motorcycle gear shops, katabi ng mga helmet at gloves na binibili mo.",
+  zone_shell:"PU leather na katawan", zone_sleeves:"Manggas", zone_pcm:"Cooling panels", zone_gel:"Gel pockets", zone_armor:"Armor pads", zone_accent:"Trim at zipper",
+  hint_shell:"PU leather na outer shell. Magaan at madaling punasan, may zipper vents para pumasok ang hangin.",
+  hint_sleeves:"PU leather na manggas na may moisture-wicking PET mesh lining, komportable kahit long ride.",
+  hint_pcm:"Ang PCM thermal panels sa dibdib, gilid at likod ay sumisipsip ng sobrang init ng katawan.",
+  hint_gel:"Dalawang removable gel pockets sa itaas ng likod. Palamigin sa ref, tapos isingit.",
+  hint_armor:"Armor sa balikat at siko para proteksyon sa impact.",
+  hint_accent:"Collar trim, cuffs, shoulder marks, waist tabs at back zipper vents. Reflective sa gabi.",
+  sub:"{shell} na leather · {pcm} na cooling panels · size {size}", subBottle:" · {c} na {st}, {s}",
+  priceNote:"{t} · proposed na presyo", custom:"Custom: {a} at {b}",
+  toastLoaded:"Na-load ang {n}. Palitan ang kahit anong parte, o dumiretso sa deals.", toastRandom:"Bagong random build. I-tap ang kahit anong parte para baguhin.",
+  toastReset:"Balik sa Original Black build.", toastSaved:"Na-save na. Makikita mo ito sa Mga na-save kong build.",
+  toastCopied:"Nakopya na! I-paste sa post o group chat mo.",
+  toastMatchB:"Terno na ang cooling panels at trim sa {c} mong bottle.", toastMatchJ:"{c} na ang bottle at {l} ang takip, terno sa jacket mo.",
+  toastCard:"Ready na ang build card. Tingnan sa downloads mo.", toastCardFail:"Hindi magawa ang card sa browser na ito. Subukan sa Chrome o Safari.",
+  toastSize:"Napili ang size {s}.", toastTier:"Napili ang {t}.",
+  bottleWord:"bottle", tumblerWord:"tumbler", withLid:"{c} na {st} ({s}) na may {l} na {lid}", noBottle:"Hindi kasama",
+  copyText:"Ang Aquacool build ko: {parts}, size {size}{bottle}. Stay cool, stay fresh. #StayCoolStayFresh", copyBottle:", terno sa {b}",
+  cardMy:"Ang build ko:", cardSize:"Size", cardBottle:"Bottle", cardFoot:"Konsepto ng estudyante para sa marketing class · hindi opisyal na produkto ng Aquaflask",
+  footer:"Ang Aquacool ay konsepto ng estudyante para sa marketing class. Ang Aquaflask ay trademark ng may-ari nito; hindi konektado o inendorso ng Aquaflask ang page na ito.",
+  d_original:"All-black na leather na may aqua panels. Ang launch look namin.",
+  d_gunmetal:"Gray at charcoal na may deep teal panels. Low-key at moderno.",
+  d_burgundy:"Burgundy na may itim na manggas. Classic café-racer ang dating.",
+  d_espresso:"Brown na leather na may stone trim. Vintage at madaling isuot.",
+  d_navy:"Navy at slate na may aqua trim. Malinis tingnan pang-office commute.",
+  d_olive:"Olive at itim na may forest panels. Matibay at pang-outdoor.",
+  d_sunset:"Coral at tangerine na may sunshine trim.",
+  d_mint:"Fresh na mint na may navy armor at aqua panels.",
+  d_lilac:"Lilac na leather na may bubblegum panels.",
+  d_lime:"Itim na leather na may high-visibility lime accents.",
+  d_cobalt:"Bold na cobalt na may sky panels at itim na armor."
+}};
+let lang="en";
+try{ const l=localStorage.getItem("aquacoolLang"); if(l==="fil"||l==="en") lang=l; }catch(e){}
+const t=(k,v={})=>(T[lang][k]??T.en[k]??k).replace(/\{(\w+)\}/g,(_,x)=>v[x]??"");
+
+// ================= DATA =================
+const DARKS = [
+  ["Black","#15171A"],["Charcoal","#2E3238"],["Gunmetal","#4A5560"],["Slate Blue","#3E5770"],
+  ["Navy","#1F3A6B"],["Deep Teal","#0F5C63"],["Forest","#2E5E46"],["Olive","#5A5F3A"],
+  ["Burgundy","#6B1E2E"],["Espresso","#4A3328"],["Plum","#4B2E5A"],["Stone","#A8A39A"]
+];
+const BRIGHTS = [
+  ["Aqua","#3CC7E0"],["Cobalt","#2F6BFF"],["Mint","#7FE0C2"],["Sky","#6FA8FF"],["Lilac","#B79CFF"],
+  ["Bubblegum","#FF8AC6"],["Coral","#FF6F61"],["Tangerine","#FF9F3F"],["Sunshine","#FFD84A"],["Lime","#B6E35A"],["Cloud","#F5F7FA"]
+];
+const HEX = Object.fromEntries(DARKS.concat(BRIGHTS));
+const ZONES = [["shell","front"],["sleeves","front"],["pcm","front"],["gel","back"],["armor","front"],["accent","front"]];
+const zoneName = k => t("zone_"+k);
+const PRESETS = [
+  {g:"classic",n:"Original Black",d:"d_original",s:{shell:"Black",sleeves:"Black",pcm:"Aqua",gel:"Cobalt",armor:"Black",accent:"Aqua"}},
+  {g:"classic",n:"Gunmetal Touring",d:"d_gunmetal",s:{shell:"Gunmetal",sleeves:"Charcoal",pcm:"Deep Teal",gel:"Aqua",armor:"Charcoal",accent:"Stone"}},
+  {g:"classic",n:"Burgundy Heritage",d:"d_burgundy",s:{shell:"Burgundy",sleeves:"Black",pcm:"Charcoal",gel:"Slate Blue",armor:"Black",accent:"Stone"}},
+  {g:"classic",n:"Espresso Rider",d:"d_espresso",s:{shell:"Espresso",sleeves:"Espresso",pcm:"Stone",gel:"Deep Teal",armor:"Black",accent:"Stone"}},
+  {g:"classic",n:"Navy Patrol",d:"d_navy",s:{shell:"Navy",sleeves:"Navy",pcm:"Slate Blue",gel:"Aqua",armor:"Charcoal",accent:"Aqua"}},
+  {g:"classic",n:"Olive Tactical",d:"d_olive",s:{shell:"Olive",sleeves:"Black",pcm:"Forest",gel:"Deep Teal",armor:"Black",accent:"Stone"}},
+  {g:"bold",n:"Sunset Ride",d:"d_sunset",s:{shell:"Coral",sleeves:"Tangerine",pcm:"Sunshine",gel:"Cobalt",armor:"Black",accent:"Sunshine"}},
+  {g:"bold",n:"Mint Commute",d:"d_mint",s:{shell:"Mint",sleeves:"Cloud",pcm:"Aqua",gel:"Cobalt",armor:"Navy",accent:"Navy"}},
+  {g:"bold",n:"Lilac Cruise",d:"d_lilac",s:{shell:"Lilac",sleeves:"Lilac",pcm:"Bubblegum",gel:"Sky",armor:"Black",accent:"Cloud"}},
+  {g:"bold",n:"Black & Lime",d:"d_lime",s:{shell:"Black",sleeves:"Black",pcm:"Lime",gel:"Cobalt",armor:"Charcoal",accent:"Lime"}},
+  {g:"bold",n:"Cobalt Blue",d:"d_cobalt",s:{shell:"Cobalt",sleeves:"Navy",pcm:"Sky",gel:"Aqua",armor:"Black",accent:"Cloud"}}
+];
+// team price range ₱2,800–3,000: ready builds ₱2,800, custom colors ₱3,000
+// proposed add-ons: bottle ₱1,000 · spare gel pack set ₱500
+const JACKET_READY = 2800, JACKET_CUSTOM = 3000;
+const jacketPrice = () => presetName ? JACKET_READY : JACKET_CUSTOM;
+const TIERS = [
+  {id:"jacket", n:"Jacket only", items:"t_jacket", add:0, fullAdd:0, bottle:false},
+  {id:"rider", n:"Rider Bundle", items:"t_rider", add:800, fullAdd:1000, bottle:true, popular:true},
+  {id:"season", n:"Cool Season Bundle", items:"t_season", add:1200, fullAdd:1500, bottle:true}
+].map(x=>Object.defineProperties(x,{price:{get(){return jacketPrice()+x.add;}}, full:{get(){return jacketPrice()+x.fullAdd;}}}));
+const SIZES = [["XS",86,91],["S",92,97],["M",98,103],["L",104,109],["XL",110,116],["2XL",117,123],["3XL",124,130]];
+const QUIZ = { ride:["commute","weekend","night"], style:["classic","bold"], hue:["greys","blues","greens","pinks","warm"] };
+const QUIZ_MAP = {
+  classic:{greys:"Original Black",blues:"Navy Patrol",greens:"Olive Tactical",pinks:"Burgundy Heritage",warm:"Espresso Rider"},
+  bold:{greys:"Black & Lime",blues:"Cobalt Blue",greens:"Mint Commute",pinks:"Lilac Cruise",warm:"Sunset Ride"}
+};
+// proposed pop-up booth schedule (concept)
+const BOOTHS = [
+  {r:"north", mall:"Ayala Malls Vertis North", city:"Quezon City", spot:"Activity Center", s:"2027-03-05", e:"2027-03-07"},
+  {r:"south", mall:"Festival Mall", city:"Alabang, Muntinlupa City", spot:"Main Atrium", s:"2027-03-12", e:"2027-03-14"},
+  {r:"central", mall:"Glorietta 2", city:"Makati City", spot:"Activity Center", s:"2027-03-19", e:"2027-03-21"},
+  {r:"north", mall:"SM City Fairview", city:"Quezon City", spot:"Main Atrium", s:"2027-04-02", e:"2027-04-04"},
+  {r:"south", mall:"SM Mall of Asia", city:"Pasay City", spot:"Main Mall Atrium", s:"2027-04-09", e:"2027-04-11"},
+  {r:"central", mall:"SM Megamall", city:"Mandaluyong City", spot:"Mega Atrium", s:"2027-04-16", e:"2027-04-18"}
+];
+const LAYERS = [
+  {k:"L1", zone:"shell", pat:"pGrain"},
+  {k:"L2", zone:"pcm", pat:"pHex"},
+  {k:"L3", zone:"gel", pat:"pGel"},
+  {k:"L4", zone:null, pat:"pMesh", fixed:"#C9D1D6"}
+];
+const FEATURES = [
+  {h:"featGel", d:"featGelD", steps:["gel1","gel2","gel3"], z:"gel"},
+  {h:"featPcm", d:"featPcmD", z:"pcm"},
+  {h:"featVent", d:"featVentD", z:"accent"},
+  {h:"featArmor", d:"featArmorD", z:"armor"},
+  {h:"featReflect", d:"featReflectD", z:"accent"}
+];
+
+let state = {...PRESETS[0].s};
+let presetName = PRESETS[0].n;
+let group = "classic", active = "shell", view = "front", tier = "rider", size = "M", fit = "snug", region = "all", layerOn = 0;
+let quiz = {};
+let bottle = {style:"bottle", size:"32 oz", lid:"Flex cap", color:"Aqua", lidColor:"Black"};
+const BOTTLE_OPTS = {
+  bottle: {sizes:["18 oz","22 oz","32 oz","40 oz"], lids:["Flex cap","Spout lid","Straw lid"]},
+  tumbler:{sizes:["30 oz","40 oz"], lids:["Straw lid","Flip lid"]}
+};
+const SIZE_H = {"18 oz":118,"22 oz":136,"30 oz":140,"32 oz":158,"40 oz":178};
+const $ = id => document.getElementById(id);
+const curTier = () => TIERS.find(x=>x.id===tier);
+const hasBottle = () => curTier().bottle;
+const peso = n => n.toLocaleString("en-PH");
+const buildName = () => presetName || comboTitle();
+const bottleLabel = () => t("withLid",{c:bottle.color, s:bottle.size, st:t(bottle.style==="tumbler"?"tumblerWord":"bottleWord"), l:bottle.lidColor.toLowerCase(), lid:bottle.lid.toLowerCase()});
+function comboTitle(){
+  const u=[...new Set([state.shell,state.pcm,state.accent])];
+  return t("custom",{a:u[0], b:u[1]||u[0]});
+}
+
+// ================= BOTTLE DRAWING =================
+function drawBottle(){
+  const B=HEX[bottle.color], L=HEX[bottle.lidColor], O='stroke="#0B0E11" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"';
+  const cx=50, bottom=234, h=SIZE_H[bottle.size];
+  let s="";
+  const loop=d=>`<path d="${d}" fill="none" stroke="#0B0E11" stroke-width="11" stroke-linecap="round"/><path d="${d}" fill="none" stroke="${L}" stroke-width="5" stroke-linecap="round"/>`;
+  if(bottle.style==="bottle"){
+    const w=(bottle.size==="32 oz"||bottle.size==="40 oz")?62:54, top=bottom-h, hw=w/2;
+    s+=`<path ${O} fill="${B}" d="M${cx-hw},${top+22} Q${cx-hw},${top+2} ${cx-21},${top} L${cx+21},${top} Q${cx+hw},${top+2} ${cx+hw},${top+22} L${cx+hw},${bottom-10} Q${cx+hw},${bottom} ${cx+hw-10},${bottom} L${cx-hw+10},${bottom} Q${cx-hw},${bottom} ${cx-hw},${bottom-10} Z"/>`;
+    s+=`<path d="M${cx-hw+8},${top+30} V${bottom-16}" stroke="#fff" stroke-opacity=".4" stroke-width="5" stroke-linecap="round"/>`;
+    s+=`<path d="M${cx-hw},${bottom-14} H${cx+hw}" stroke="#0B0E11" stroke-opacity=".35" stroke-width="2"/>`;
+    s+=`<rect ${O} x="${cx-22}" y="${top-8}" width="44" height="10" rx="2" fill="#C4CDD3"/>`;
+    const capTop=top-28;
+    if(bottle.lid==="Flex cap"){
+      s+=loop(`M${cx-13},${capTop+2} C${cx-13},${capTop-20} ${cx+13},${capTop-20} ${cx+13},${capTop+2}`);
+      s+=`<rect ${O} x="${cx-24}" y="${capTop}" width="48" height="21" rx="6" fill="${L}"/>`;
+      s+=`<path d="M${cx-24},${capTop+12} H${cx+24}" stroke="#0B0E11" stroke-opacity=".3" stroke-width="2"/>`;
+    } else if(bottle.lid==="Spout lid"){
+      s+=loop(`M${cx-22},${capTop+6} C${cx-22},${capTop-30} ${cx+22},${capTop-30} ${cx+22},${capTop+6}`);
+      s+=`<rect ${O} x="${cx-24}" y="${capTop}" width="48" height="21" rx="6" fill="${L}"/>`;
+      s+=`<rect ${O} x="${cx-7}" y="${capTop-14}" width="14" height="15" rx="4" fill="${L}"/>`;
+    } else {
+      s+=`<path d="M${cx+4},${capTop+2} V${capTop-34} L${cx+16},${capTop-42}" fill="none" stroke="#0B0E11" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>`;
+      s+=`<path d="M${cx+4},${capTop+2} V${capTop-34} L${cx+16},${capTop-42}" fill="none" stroke="${L}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`;
+      s+=loop(`M${cx-20},${capTop+4} C${cx-22},${capTop-16} ${cx-6},${capTop-18} ${cx-4},${capTop+2}`);
+      s+=`<rect ${O} x="${cx-24}" y="${capTop}" width="48" height="21" rx="6" fill="${L}"/>`;
+    }
+  } else {
+    const top=bottom-h-6, tw=34, bw=24;
+    s+=`<path d="M${cx+tw-4},${top+24} C${cx+tw+26},${top+24} ${cx+tw+26},${top+94} ${cx+bw+8},${top+100}" fill="none" stroke="#0B0E11" stroke-width="15" stroke-linecap="round"/>`;
+    s+=`<path d="M${cx+tw-4},${top+24} C${cx+tw+26},${top+24} ${cx+tw+26},${top+94} ${cx+bw+8},${top+100}" fill="none" stroke="${B}" stroke-width="9" stroke-linecap="round"/>`;
+    s+=`<path ${O} fill="${B}" d="M${cx-tw},${top} L${cx+tw},${top} L${cx+bw},${bottom-8} Q${cx+bw-1},${bottom} ${cx+bw-8},${bottom} L${cx-bw+8},${bottom} Q${cx-bw+1},${bottom} ${cx-bw},${bottom-8} Z"/>`;
+    s+=`<path d="M${cx-tw+8},${top+14} L${cx-bw+6},${bottom-14}" stroke="#fff" stroke-opacity=".4" stroke-width="5" stroke-linecap="round"/>`;
+    s+=`<path d="M${cx-bw-3},${bottom-40} H${cx+bw+3}" stroke="#0B0E11" stroke-opacity=".3" stroke-width="2"/>`;
+    if(bottle.lid==="Straw lid"){
+      s+=`<path d="M${cx+6},${top-6} V${top-40}" stroke="#0B0E11" stroke-width="9" stroke-linecap="round"/><path d="M${cx+6},${top-6} V${top-40}" stroke="${L}" stroke-width="4" stroke-linecap="round"/>`;
+    }
+    s+=`<rect ${O} x="${cx-tw-3}" y="${top-12}" width="${2*tw+6}" height="14" rx="5" fill="${L}"/>`;
+    if(bottle.lid==="Flip lid"){
+      s+=`<rect ${O} x="${cx-10}" y="${top-20}" width="20" height="10" rx="3" fill="${L}"/>`;
+    }
+  }
+  $("bottle").innerHTML=s;
+  $("bottle").setAttribute("aria-label", bottleLabel());
+}
+function fillSelect(id, list, val){
+  $(id).innerHTML = list.map(n=>`<option${n===val?" selected":""}>${n}</option>`).join("");
+}
+function syncBottleControls(){
+  const o=BOTTLE_OPTS[bottle.style];
+  if(!o.sizes.includes(bottle.size)) bottle.size=o.sizes[o.sizes.length-1];
+  if(!o.lids.includes(bottle.lid)) bottle.lid=o.lids[0];
+  fillSelect("bSize", o.sizes, bottle.size);
+  fillSelect("bLid", o.lids, bottle.lid);
+  const all=DARKS.concat(BRIGHTS).map(c=>c[0]);
+  fillSelect("bColor", all, bottle.color);
+  fillSelect("bLidColor", all, bottle.lidColor);
+  document.querySelectorAll(".bstyle").forEach(b=>b.setAttribute("aria-pressed", b.dataset.s===bottle.style));
+}
+
+// ================= CLONES (hero + order summary) =================
+function cloneJacket(v){
+  const c=$("jacket").cloneNode(true);
+  c.removeAttribute("id");
+  c.querySelector("defs")?.remove();
+  c.querySelectorAll(".active").forEach(e=>e.classList.remove("active"));
+  c.querySelector("#front").setAttribute("display", v==="front"?"inline":"none");
+  c.querySelector("#back").setAttribute("display", v==="back"?"inline":"none");
+  c.querySelectorAll("[id]").forEach(e=>e.removeAttribute("id"));
+  c.setAttribute("aria-label", `Aquacool jacket, ${v} view`);
+  return c;
+}
+function cloneBottle(){
+  const c=$("bottle").cloneNode(true); c.removeAttribute("id"); c.style.opacity=""; return c;
+}
+function renderClones(){
+  const hp=$("heroPair"); hp.replaceChildren(cloneJacket("front"), cloneJacket("back"));
+  $("heroCap").innerHTML = t("heroCap",{n:buildName()});
+  const dv=$("dealVis"); dv.replaceChildren(cloneJacket("front"));
+  if(hasBottle()) dv.appendChild(cloneBottle());
+}
+
+// ================= PRODUCT LAYERS =================
+function renderLayers(){
+  const g=$("slabs"); let s="";
+  LAYERS.forEach((L,i)=>{
+    const y=70+i*62, col=L.fixed||HEX[state[L.zone]];
+    const top=`40,${y+30} 200,${y} 360,${y+30} 200,${y+60}`;
+    const left=`40,${y+30} 200,${y+60} 200,${y+72} 40,${y+42}`;
+    const right=`200,${y+60} 360,${y+30} 360,${y+42} 200,${y+72}`;
+    const cls = "slab" + (i===layerOn?" on":" dim");
+    s+=`<g class="${cls}" data-l="${i}">
+      <polygon points="${left}" fill="${col}" stroke="#0B0E11" stroke-width="2" stroke-linejoin="round"/>
+      <polygon points="${left}" fill="#000" fill-opacity=".3"/>
+      <polygon points="${right}" fill="${col}" stroke="#0B0E11" stroke-width="2" stroke-linejoin="round"/>
+      <polygon points="${right}" fill="#000" fill-opacity=".15"/>
+      <polygon points="${top}" fill="${col}" stroke="#0B0E11" stroke-width="2" stroke-linejoin="round"/>
+      <polygon points="${top}" fill="url(#${L.pat})"/>
+    </g>`;
+  });
+  // draw bottom layer first so upper slabs overlap correctly
+  g.innerHTML = s;
+  [...g.children].reverse().forEach(el=>g.appendChild(el));
+  $("layerList").innerHTML = LAYERS.map((L,i)=>`<button class="lbtn" data-l="${i}" aria-pressed="${i===layerOn}"><span class="ln">${i+1}</span><strong>${t(L.k+"t")}</strong><span class="d">${t(L.k+"d")}</span></button>`).join("");
+  $("features").innerHTML = FEATURES.map(f=>`<div class="feat"><span class="bar" style="background:${HEX[state[f.z]]}"></span><h3>${t(f.h)}</h3><p>${t(f.d)}</p>${f.steps?`<ol>${f.steps.map(k=>`<li>${t(k)}</li>`).join("")}</ol>`:""}</div>`).join("");
+}
+$("layerList").addEventListener("click",e=>{const b=e.target.closest("[data-l]"); if(b){layerOn=+b.dataset.l; renderLayers();}});
+$("layerSvg").addEventListener("click",e=>{const g=e.target.closest(".slab"); if(g){layerOn=+g.dataset.l; renderLayers();}});
+
+// ================= VIEW / MODE / LANGUAGE =================
+function setView(v){
+  view=v;
+  $("front").setAttribute("display", v==="front" ? "inline" : "none");
+  $("back").setAttribute("display", v==="back" ? "inline" : "none");
+  $("viewFront").setAttribute("aria-pressed", v==="front"); $("viewBack").setAttribute("aria-pressed", v==="back");
+}
+let night=false;
+try{ night = window.matchMedia("(prefers-color-scheme: dark)").matches; }catch(e){}
+function setNight(on){
+  night=on;
+  document.documentElement.setAttribute("data-theme", on?"dark":"light");
+  document.body.classList.toggle("night", on);
+  $("modeDay").setAttribute("aria-pressed", !on); $("modeNight").setAttribute("aria-pressed", on);
+  $("nightNote").hidden = !on;
+}
+function applyStatic(){
+  document.documentElement.lang = lang==="fil" ? "fil" : "en";
+  document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));
+  document.querySelectorAll("[data-i18n-html]").forEach(el=>el.innerHTML=t(el.dataset.i18nHtml));
+  $("langEn").setAttribute("aria-pressed", lang==="en"); $("langFil").setAttribute("aria-pressed", lang==="fil");
+  $("guideOpen").textContent = t($("guide").hidden?"guideOpen":"guideClose");
+}
+function renderAll(){ applyStatic(); render(); renderQuiz(); renderGuide(); renderSaved(); updateCompare(); renderBooths(); renderReg(); }
+function setLang(l){ lang=l; try{ localStorage.setItem("aquacoolLang",l); }catch(e){} renderAll(); }
+
+// ================= RENDER (builder + deals) =================
+function swatchHTML(list){
+  return list.map(([n,h])=>`<button class="sw" data-c="${n}" aria-pressed="${state[active]===n}" aria-label="${n}"><b style="background:${h}"></b>${n}</button>`).join("");
+}
+function render(){
+  document.querySelectorAll("#jacket [data-zone]").forEach(el=>{
+    el.setAttribute("fill", HEX[state[el.dataset.zone]]);
+    el.classList.toggle("active", el.dataset.zone===active);
+  });
+  drawBottle();
+  $("bottle").style.opacity = hasBottle() ? 1 : .2;
+  $("bottleOptions").hidden = !hasBottle();
+  $("presets").innerHTML = PRESETS.filter(p=>p.g===group).map(p=>`<button class="pcard" data-n="${p.n}" aria-pressed="${p.n===presetName}"><span class="dots">${["shell","pcm","gel","accent"].map(k=>`<i style="background:${HEX[p.s[k]]}"></i>`).join("")}</span><strong>${p.n}</strong><span class="d">${t(p.d)}</span></button>`).join("");
+  document.querySelectorAll(".tab[data-g]").forEach(x=>x.setAttribute("aria-pressed", x.dataset.g===group));
+  $("zones").innerHTML = ZONES.map(([k])=>`<button class="zone" data-k="${k}" aria-pressed="${k===active}"><i style="background:${HEX[state[k]]}"></i>${zoneName(k)}</button>`).join("");
+  const z = ZONES.find(z=>z[0]===active);
+  $("zoneHint").innerHTML = `<strong>${zoneName(active)}:</strong> ${t("hint_"+active)}${z[1]==="back"?` <em>${t("backNote")}</em>`:""}`;
+  $("swDark").innerHTML = swatchHTML(DARKS);
+  $("swBright").innerHTML = swatchHTML(BRIGHTS);
+  $("sizes").innerHTML = SIZES.map(([s])=>`<button class="tab" data-size="${s}" aria-pressed="${s===size}">${s}</button>`).join("");
+  $("tiers").innerHTML = TIERS.map(x=>`<button class="tier" data-t="${x.id}" aria-pressed="${x.id===tier}">${x.popular?`<span class="pop">${t("popular")}</span>`:""}<strong>${x.n}</strong><span class="tp">₱${peso(x.price)}</span>${x.full>x.price?`<span class="was">${t("wasPrice",{n:peso(x.full)})}</span>`:""}<span class="ti">${t(x.items)}</span>${x.full>x.price?`<span class="save">${t("saveAmt",{n:peso(x.full-x.price)})}</span>`:""}</button>`).join("");
+  $("comboName").textContent = buildName();
+  $("comboSub").textContent = t("sub",{shell:state.shell, pcm:state.pcm, size}) + (hasBottle() ? t("subBottle",{c:bottle.color, s:bottle.size, st:t(bottle.style==="tumbler"?"tumblerWord":"bottleWord")}) : "");
+  $("price").innerHTML = `₱${peso(curTier().price)}<small>${t("priceNote",{t:curTier().n})}</small>`;
+  // order summary
+  const T0=curTier();
+  const lines = [[t("lnBuild"),buildName()],[t("lnDesign"),presetName?t("readyBuild"):t("customBuild")],[t("lnSize"),size],[t("lnBundle"),T0.n],[t("lnBottle"),hasBottle()?bottleLabel():t("noBottle")]];
+  if(T0.full>T0.price) lines.push([t("lnSave"),"₱"+peso(T0.full-T0.price)]);
+  const dl = lines.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join("");
+  $("orderLines").innerHTML = dl; $("mLines").innerHTML = dl;
+  $("orderTotal").textContent = $("mTotal").textContent = "₱"+peso(T0.price);
+  $("bbName").textContent = `${buildName()} · ${size} · ${T0.n}`;
+  $("bbPrice").textContent = "₱"+peso(T0.price);
+  renderClones(); renderLayers();
+}
+function toast(msg, ms=4500){
+  const el=$("toast"); el.textContent=msg; el.hidden=false;
+  clearTimeout(toast.t); if(ms) toast.t=setTimeout(()=>{el.hidden=true;},ms);
+}
+$("toast").addEventListener("click",()=>{$("toast").hidden=true;});
+function pickZone(k){
+  active=k;
+  if(ZONES.find(z=>z[0]===k)[1]==="back") setView("back");
+  render();
+}
+function loadPreset(name){
+  const p=PRESETS.find(p=>p.n===name); state={...p.s}; presetName=p.n; group=p.g;
+}
+
+// ================= EVENTS: builder =================
+$("viewFront").addEventListener("click",()=>setView("front"));
+$("viewBack").addEventListener("click",()=>setView("back"));
+$("modeDay").addEventListener("click",()=>setNight(false));
+$("modeNight").addEventListener("click",()=>setNight(true));
+$("langEn").addEventListener("click",()=>setLang("en"));
+$("langFil").addEventListener("click",()=>setLang("fil"));
+document.querySelectorAll(".tab[data-g]").forEach(x=>x.addEventListener("click",()=>{group=x.dataset.g; render();}));
+$("presets").addEventListener("click",e=>{const b=e.target.closest(".pcard"); if(b){loadPreset(b.dataset.n); render(); toast(t("toastLoaded",{n:presetName}));}});
+$("zones").addEventListener("click",e=>{const b=e.target.closest(".zone"); if(b) pickZone(b.dataset.k);});
+document.querySelector(".steps").addEventListener("click",e=>{const b=e.target.closest(".sw"); if(b){state[active]=b.dataset.c; presetName=""; render();}});
+$("jacket").addEventListener("click",e=>{const z=e.target.closest("[data-zone]"); if(z){active=z.dataset.zone; render();}});
+$("shuffle").addEventListener("click",()=>{
+  const d=DARKS.map(c=>c[0]), b=BRIGHTS.map(c=>c[0]), pick=a=>a[Math.floor(Math.random()*a.length)];
+  state={shell:pick(d.concat(b)),sleeves:pick(d),pcm:pick(b),gel:pick(b),armor:pick(d),accent:pick(b)};
+  presetName=""; render(); toast(t("toastRandom"));
+});
+$("reset").addEventListener("click",()=>{loadPreset("Original Black"); active="shell"; setView("front"); render(); toast(t("toastReset"));});
+
+// ================= QUIZ =================
+function renderQuiz(){
+  document.querySelectorAll("#quiz [data-q]").forEach(box=>{
+    const q=box.dataset.q;
+    box.innerHTML = QUIZ[q].map(o=>`<button class="tab" data-o="${o}" aria-pressed="${quiz[q]===o}">${t("o_"+o)}</button>`).join("");
+  });
+  const done = quiz.ride && quiz.style && quiz.hue;
+  $("quizResult").hidden = !done;
+  if(done){
+    const name=QUIZ_MAP[quiz.style][quiz.hue], p=PRESETS.find(p=>p.n===name);
+    $("quizResult").innerHTML = `<span class="dots">${["shell","pcm","gel","accent"].map(k=>`<i style="background:${HEX[p.s[k]]}"></i>`).join("")}</span>
+      <h4>${t("match")} ${name}</h4><p>${t(p.d)}</p><p>${t("n_"+quiz.ride)}</p>
+      <div><button class="btn primary small" id="quizUse">${t("useBuild")}</button></div>`;
+  }
+}
+$("quizOpen").addEventListener("click",()=>{ $("quiz").hidden=false; $("quizOpen").hidden=true; renderQuiz(); });
+$("quizClose").addEventListener("click",()=>{ $("quiz").hidden=true; $("quizOpen").hidden=false; });
+$("quiz").addEventListener("click",e=>{
+  const o=e.target.closest("[data-o]");
+  if(o){ quiz[o.closest("[data-q]").dataset.q]=o.dataset.o; renderQuiz(); return; }
+  if(e.target.closest("#quizUse")){
+    const name=QUIZ_MAP[quiz.style][quiz.hue];
+    loadPreset(name);
+    tier = quiz.ride==="weekend" ? "season" : "rider";
+    setNight(quiz.ride==="night");
+    setView("front"); render();
+    toast(t("toastLoaded",{n:name}));
+    $("quiz").hidden=true; $("quizOpen").hidden=false;
+  }
+});
+
+// ================= SIZE GUIDE =================
+function recommendSize(){
+  const h=+$("hIn").value, c=+$("cIn").value;
+  if(!h || !c) return {msg:t("badInput")};
+  const chest = c + (fit==="room" ? 4 : 0);
+  const hit = SIZES.find(([,lo,hi])=>chest>=lo && chest<=hi+0.99);
+  if(!hit) return {msg:t("outRange")};
+  return {s:hit[0], msg:t("recommend",{s:hit[0]}) + (h>=180 ? t("tall") : "")};
+}
+function renderGuide(){
+  const r=recommendSize();
+  $("sizeResult").innerHTML = `<p style="color:var(--ink);font-weight:700;font-size:16px;margin:0">${r.msg}</p>` + (r.s?`<div><button class="btn primary small" id="useSize" data-s="${r.s}">${t("useSize",{s:r.s})}</button></div>`:"");
+  $("chart").innerHTML = `<tr><th>${t("chartSize")}</th><th>${t("chartChest")}</th></tr>` + SIZES.map(([s,lo,hi])=>`<tr class="${r.s===s?"hit":""}"><td>${s}</td><td>${lo}–${hi}</td></tr>`).join("");
+  document.querySelectorAll("#fitTabs .tab").forEach(x=>x.setAttribute("aria-pressed", x.dataset.fit===fit));
+}
+$("guideOpen").addEventListener("click",()=>{ $("guide").hidden=!$("guide").hidden; $("guideOpen").textContent=t($("guide").hidden?"guideOpen":"guideClose"); renderGuide(); });
+$("hIn").addEventListener("input",renderGuide);
+$("cIn").addEventListener("input",renderGuide);
+$("fitTabs").addEventListener("click",e=>{const b=e.target.closest("[data-fit]"); if(b){fit=b.dataset.fit; renderGuide();}});
+$("sizeResult").addEventListener("click",e=>{const b=e.target.closest("#useSize"); if(b){size=b.dataset.s; render(); toast(t("toastSize",{s:size}));}});
+$("sizes").addEventListener("click",e=>{const b=e.target.closest("[data-size]"); if(b){size=b.dataset.size; render();}});
+
+// ================= DEALS + BOTTLE =================
+syncBottleControls();
+$("tiers").addEventListener("click",e=>{const b=e.target.closest(".tier"); if(b){tier=b.dataset.t; render();}});
+document.querySelectorAll(".bstyle").forEach(b=>b.addEventListener("click",()=>{bottle.style=b.dataset.s; syncBottleControls(); render();}));
+$("bSize").addEventListener("change",e=>{bottle.size=e.target.value; render();});
+$("bLid").addEventListener("change",e=>{bottle.lid=e.target.value; render();});
+$("bColor").addEventListener("change",e=>{bottle.color=e.target.value; render();});
+$("bLidColor").addEventListener("change",e=>{bottle.lidColor=e.target.value; render();});
+$("matchBottle").addEventListener("click",()=>{state.pcm=bottle.color; state.accent=bottle.color; presetName=""; render(); toast(t("toastMatchB",{c:bottle.color}));});
+$("matchJacket").addEventListener("click",()=>{bottle.color=state.pcm; bottle.lidColor=state.shell; syncBottleControls(); render(); toast(t("toastMatchJ",{c:state.pcm, l:state.shell.toLowerCase()}));});
+
+// buy flow (demo checkout)
+let lastFocus=null;
+function openBuy(){ lastFocus=document.activeElement; $("modal").hidden=false; $("placeOrder").focus(); }
+function closeBuy(){ $("modal").hidden=true; lastFocus?.focus?.(); }
+$("buyNow").addEventListener("click",openBuy);
+$("bbBuy").addEventListener("click",openBuy);
+$("mClose").addEventListener("click",closeBuy);
+$("modal").addEventListener("click",e=>{ if(e.target===$("modal")) closeBuy(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape" && !$("modal").hidden) closeBuy(); });
+$("placeOrder").addEventListener("click",()=>{
+  const pay=document.querySelector('input[name="pay"]:checked').value;
+  const b=buildName() + (hasBottle()?" + "+bottleLabel():"");
+  closeBuy();
+  toast(t("toastOrdered",{b, s:size, t:curTier().n, p:peso(curTier().price), pay:t(pay)}), 7000);
+});
+
+// sticky buy bar: visible while the designer is on screen
+const bar=$("buybar");
+function setBar(show){ bar.classList.toggle("show",show); bar.setAttribute("aria-hidden",!show); bar.querySelectorAll("a,button").forEach(x=>x.tabIndex=show?0:-1); }
+try{
+  const io=new IntersectionObserver(es=>{ es.forEach(en=>{ if(en.target.id==="design") setBar(en.isIntersecting); }); },{rootMargin:"0px 0px -30% 0px"});
+  io.observe($("design"));
+}catch(e){}
+
+function buildText(){
+  const parts=ZONES.map(([k])=>`${zoneName(k)}: ${state[k]}`).join(", ");
+  return t("copyText",{parts, size, bottle: hasBottle()?t("copyBottle",{b:bottleLabel()}):""});
+}
+$("copy").addEventListener("click",()=>{
+  const txt=buildText();
+  const fallback=()=>{ toast(txt,0); const r=document.createRange(); r.selectNodeContents($("toast")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try{ navigator.clipboard.writeText(txt).then(()=>toast(t("toastCopied")),fallback); }catch(e){ fallback(); }
+});
+
+// ================= SAVED BUILDS =================
+let saved=[];
+try{ saved=JSON.parse(localStorage.getItem("aquacoolBuilds")||"[]"); }catch(e){ saved=[]; }
+function renderSaved(){
+  $("saved").innerHTML = saved.length ? saved.map((m,i)=>`<button class="zone" data-i="${i}"><span class="dots">${["shell","pcm","accent"].map(k=>`<i style="background:${HEX[m.s[k]]||"#888"};width:14px;height:14px"></i>`).join("")}</span>${m.n}</button>`).join("") : `<span class="empty">${t("savedEmpty")}</span>`;
+}
+$("save").addEventListener("click",()=>{
+  saved.unshift({n:buildName(), s:{...state}}); saved=saved.slice(0,8);
+  try{ localStorage.setItem("aquacoolBuilds",JSON.stringify(saved)); }catch(e){}
+  renderSaved(); toast(t("toastSaved"));
+});
+$("saved").addEventListener("click",e=>{const b=e.target.closest("[data-i]"); if(b){const m=saved[+b.dataset.i]; state={...m.s}; presetName=PRESETS.some(p=>p.n===m.n)?m.n:""; render();}});
+
+// ================= SEE THE DIFFERENCE =================
+function heatColor(v){
+  const stops=[[32,[60,199,224]],[34,[127,224,194]],[36,[255,216,74]],[37.5,[255,159,63]],[39.5,[232,69,47]]];
+  if(v<=stops[0][0]) return `rgb(${stops[0][1]})`;
+  for(let i=1;i<stops.length;i++){
+    if(v<=stops[i][0]){const [a,ca]=stops[i-1],[b,cb]=stops[i],k=(v-a)/(b-a);
+      return `rgb(${ca.map((x,j)=>Math.round(x+(cb[j]-x)*k)).join(",")})`;}
+  }
+  return `rgb(${stops[stops.length-1][1]})`;
+}
+function updateCompare(){
+  const m=+$("minutes").value, f=1-Math.exp(-m/12);
+  const reg=33.5+6*f, aqua=33.5+1.3*f;
+  $("tempReg").textContent=reg.toFixed(1)+"°C";
+  $("tempAqua").textContent=aqua.toFixed(1)+"°C";
+  $("heatReg").setAttribute("fill",heatColor(reg));
+  $("heatAqua").setAttribute("fill",heatColor(aqua));
+  $("minLabel").textContent = m===1 ? t("min1") : t("mins",{m});
+  $("diff").textContent = m===0 ? t("diff0") : t("diff",{d:(reg-aqua).toFixed(1)});
+}
+$("minutes").addEventListener("input",updateCompare);
+
+// ================= POP-UP BOOTHS =================
+function fmtRange(s,e){
+  const loc = lang==="fil" ? "fil-PH" : "en-PH";
+  const a=new Date(s+"T00:00:00"), b=new Date(e+"T00:00:00");
+  const mon=d=>d.toLocaleDateString(loc,{month:"short"});
+  if(a.getMonth()===b.getMonth()) return `${mon(a)} ${a.getDate()}–${b.getDate()}, ${b.getFullYear()}`;
+  return `${mon(a)} ${a.getDate()} – ${mon(b)} ${b.getDate()}, ${b.getFullYear()}`;
+}
+function renderBooths(){
+  const regions=["all","north","central","south"];
+  $("regions").innerHTML = regions.map(r=>`<button class="tab" data-r="${r}" aria-pressed="${r===region}">${t("r_"+r)}</button>`).join("");
+  const today=new Date(); today.setHours(0,0,0,0);
+  const status=b=>{ const s=new Date(b.s+"T00:00:00"), e=new Date(b.e+"T23:59:59"); return today>e?"done":(today>=s?"now":"soon"); };
+  const nextIdx = BOOTHS.findIndex(b=>status(b)!=="done");
+  $("boothList").innerHTML = BOOTHS.map((b,i)=>({b,i,st:status(b)})).filter(x=>region==="all"||x.b.r===region).map(({b,i,st})=>{
+    const label = st==="now" ? "now" : (i===nextIdx ? "next" : st);
+    const q=encodeURIComponent(`${b.mall}, ${b.city}`);
+    return `<article class="booth${i===nextIdx?" next":""}">
+      <span class="status ${label}">${t("st_"+label)}</span>
+      <div class="when">${fmtRange(b.s,b.e)}</div>
+      <div class="where">${b.mall}</div>
+      <div class="spot">${b.spot} · ${b.city}<br>${t("hours")}</div>
+      <div class="tags"><span>${t("tg_try")}</span><span>${t("tg_heat")}</span><span>${t("tg_chill")}</span></div>
+      <a href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">${t("openMap")}</a>
+    </article>`;
+  }).join("");
+}
+$("regions").addEventListener("click",e=>{const b=e.target.closest("[data-r]"); if(b){region=b.dataset.r; renderBooths();}});
+
+
+// ================= RIDE AND TRY REGISTRATION (demo) =================
+const BIKES=["Honda Click 125","Honda BeAT","Yamaha Mio","Yamaha NMAX","Honda ADV 160","Yamaha Aerox"];
+let regSel={e:0,b:0};
+function renderReg(){
+  const events=["NFMCP National Convention","Laguna Motofest",t("rAnyMall")];
+  $("rEvent").innerHTML=events.map((x,i)=>`<option value="${i}"${i===regSel.e?" selected":""}>${x}</option>`).join("");
+  $("rBike").innerHTML=BIKES.concat([t("rOther")]).map((x,i)=>`<option value="${i}"${i===regSel.b?" selected":""}>${x}</option>`).join("");
+}
+$("rEvent").addEventListener("change",e=>regSel.e=+e.target.value);
+$("rBike").addEventListener("change",e=>regSel.b=+e.target.value);
+$("regForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n=$("rName").value.trim(), r=$("regResult");
+  r.hidden=false;
+  if(!n){ r.textContent=t("rNeedName"); $("rName").focus(); return; }
+  r.textContent=t("rDone",{n, e:$("rEvent").selectedOptions[0].textContent});
+});
+
+// ================= BUILD CARD =================
+function svgToImage(svgEl, v){
+  const c=svgEl.cloneNode(true);
+  c.querySelectorAll(".o").forEach(el=>{el.setAttribute("stroke","#0B0E11");el.setAttribute("stroke-width","3");el.setAttribute("stroke-linejoin","round");el.setAttribute("stroke-linecap","round");});
+  c.querySelectorAll(".active").forEach(el=>el.classList.remove("active"));
+  if(v){ c.querySelector("#front").setAttribute("display",v==="front"?"inline":"none"); c.querySelector("#back").setAttribute("display",v==="back"?"inline":"none"); }
+  c.removeAttribute("style");
+  c.setAttribute("xmlns","http://www.w3.org/2000/svg");
+  c.setAttribute("width","800"); c.setAttribute("height", String(Math.round(800*c.viewBox.baseVal.height/c.viewBox.baseVal.width)));
+  const url="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(new XMLSerializer().serializeToString(c));
+  return new Promise((res,rej)=>{const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=url;});
+}
+async function makeCard(){
+  try{ await document.fonts.ready; }catch(e){}
+  const W=1080,H=1350, cv=document.createElement("canvas"); cv.width=W; cv.height=H;
+  const x=cv.getContext("2d");
+  const g=x.createLinearGradient(0,0,0,H); g.addColorStop(0,"#E1F2F6"); g.addColorStop(1,"#BFE6EE");
+  x.fillStyle=g; x.fillRect(0,0,W,H);
+  x.fillStyle=HEX[state.pcm]; x.globalAlpha=.25; x.beginPath(); x.arc(W-120,170,260,0,Math.PI*2); x.fill(); x.globalAlpha=1;
+  const D='"Bricolage Grotesque", "Arial Rounded MT Bold", sans-serif', Bf='"DM Sans", Arial, sans-serif';
+  x.fillStyle="#0091AA"; x.font=`800 30px ${D}`; x.fillText("AQUACOOL BY AQUAFLASK",70,100);
+  x.fillStyle="#141D24"; x.font=`800 76px ${D}`; x.fillText(t("cardMy"),70,190);
+  let name=buildName(); x.font=`800 64px ${D}`;
+  while(x.measureText(name).width>W-140) name=name.slice(0,-2);
+  x.fillText(name,70,262);
+  const [fr,bk]=await Promise.all([svgToImage($("jacket"),"front"),svgToImage($("jacket"),"back")]);
+  const jw=hasBottle()?425:490, jh=jw*420/400, jy=300;
+  x.drawImage(fr,40,jy,jw,jh);
+  x.drawImage(bk,40+jw-10,jy,jw,jh);
+  if(hasBottle()){ const b=await svgToImage($("bottle")); x.drawImage(b,868,jy+110,180,180*280/120); }
+  x.font=`500 28px ${Bf}`; x.fillStyle="#141D24";
+  const lines=ZONES.map(([k])=>`${zoneName(k)}: ${state[k]}`);
+  lines.forEach((l,i)=>{ const col=i%2, row=Math.floor(i/2); x.fillText(l,70+col*480,jy+jh+60+row*44); });
+  let y=jy+jh+60+3*44+10;
+  x.fillText(`${t("cardSize")}: ${size}`,70,y); y+=44;
+  if(hasBottle()){ let bl=`${t("cardBottle")}: ${bottleLabel()}`; while(x.measureText(bl).width>W-140) bl=bl.slice(0,-2); x.fillText(bl,70,y); y+=44; }
+  x.fillStyle="#0091AA"; x.font=`800 44px ${D}`;
+  const ty=Math.max(y+70,H-200);
+  x.fillText("Stay cool, stay fresh.",70,ty); x.fillText("#StayCoolStayFresh",70,ty+58);
+  x.fillStyle="#4F5E68"; x.font=`400 22px ${Bf}`; x.fillText(t("cardFoot"),70,H-60);
+  return cv.toDataURL("image/png");
+}
+$("cardBtn").addEventListener("click",async()=>{
+  $("cardBtn").disabled=true; $("cardBtn").textContent=t("making");
+  try{
+    const url=await makeCard();
+    $("cardImg").src=url; $("cardWrap").hidden=false;
+    const a=document.createElement("a"); a.href=url; a.download="aquacool-build.png"; document.body.appendChild(a); a.click(); a.remove();
+    toast(t("toastCard"));
+  }catch(e){ toast(t("toastCardFail")); }
+  $("cardBtn").disabled=false; $("cardBtn").textContent=t("cardBtn");
+});
+
+
+// ================= MAIN TABS =================
+function showTab(name, push=true){
+  document.querySelectorAll("[data-tab]").forEach(b=>b.setAttribute("aria-selected", b.dataset.tab===name));
+  ["build","about","events"].forEach(n=>{ $("panel-"+n).hidden = name!==n; });
+  if(push){ try{ history.replaceState(null,"","#"+name); }catch(e){} }
+}
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{ showTab(b.dataset.tab); window.scrollTo({top:0}); }));
+$("heroPair").addEventListener("click",()=>{ showTab("build"); $("design").scrollIntoView(); });
+// in-page links switch to the right tab before scrolling
+document.addEventListener("click",e=>{
+  const a=e.target.closest('a[href^="#"]'); if(!a) return;
+  const el=document.getElementById(a.getAttribute("href").slice(1)); if(!el) return;
+  const panel=el.closest(".panel");
+  e.preventDefault();
+  if(panel) showTab(panel.id.replace("panel-",""));
+  el.scrollIntoView();
+});
+showTab(["#about","#events"].includes(location.hash) ? location.hash.slice(1) : "build", false);
+
+// ================= START =================
+setNight(night);
+renderAll();
+
+</script>
+</body>
+</html>
