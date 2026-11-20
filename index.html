@@ -373,11 +373,6 @@ footer .wrap{display:grid;gap:8px}
 
     <!-- Subtle leather 3D shading & seam lines -->
     <g pointer-events="none">
-      <path fill="#fff" fill-opacity=".07" d="M138,108 C162,102 184,114 190,145 C182,168 152,166 135,146 Z"/>
-      <path fill="#fff" fill-opacity=".07" d="M262,108 C238,102 216,114 210,145 C218,168 248,166 265,146 Z"/>
-      <path fill="#000" fill-opacity=".22" d="M114,124 L132,140 C134,195 138,255 134,334 L116,336 L120,248 Z"/>
-      <path fill="#000" fill-opacity=".22" d="M286,124 L268,140 C266,195 262,255 266,334 L284,336 L280,248 Z"/>
-      <path fill="none" stroke="#000" stroke-opacity=".45" stroke-width="1.5" d="M134,132 C146,192 148,260 142,334 M266,132 C254,192 252,260 258,334"/>
       <line x1="116" y1="335" x2="284" y2="335" stroke="#000" stroke-opacity=".65" stroke-width="2"/>
       <line x1="116" y1="337" x2="284" y2="337" stroke="#fff" stroke-opacity=".12" stroke-width="1"/>
     </g>
@@ -989,11 +984,11 @@ const COLORS = [
 const HEX = Object.fromEntries(COLORS);
 // the five colorways from the team deck
 const CW = [
+  {id:"original", n:"Original Black", d:"d_original", s:{shell:"Black",yoke:"Black",sleeves:"Black",armor:"Black",accent:"Cloud"}},
   {id:"phoenix", n:"Phoenix Blue", d:"d_phoenix", s:{shell:"Steel Blue",yoke:"Burnt Orange",sleeves:"Black",armor:"Black",accent:"Tangerine"}},
   {id:"cabernet", n:"Night Cabernet", d:"d_cabernet", s:{shell:"Midnight",yoke:"Burgundy",sleeves:"Black",armor:"Black",accent:"Wine"}},
   {id:"forest", n:"Forest Blue", d:"d_forest", s:{shell:"Navy",yoke:"Olive",sleeves:"Black",armor:"Black",accent:"Sage"}},
-  {id:"ice", n:"Midnight Ice", d:"d_ice", s:{shell:"Black",yoke:"Black",sleeves:"Black",armor:"Black",accent:"Ice"}},
-  {id:"original", n:"Original Black", d:"d_original", s:{shell:"Black",yoke:"Black",sleeves:"Black",armor:"Black",accent:"Cloud"}}
+  {id:"ice", n:"Midnight Ice", d:"d_ice", s:{shell:"Black",yoke:"Black",sleeves:"Black",armor:"Black",accent:"Ice"}}
 ];
 const ZONES = ["shell","yoke","sleeves","armor","accent"];
 const JACKET = 4199;
@@ -1028,7 +1023,7 @@ function makeJacket(prefix, label){
 function cwSwatch(c){ return `<i style="background:linear-gradient(135deg,${HEX[c.s.shell]} 0 52%,${HEX[c.s.yoke]} 52% 100%);--acc:${HEX[c.s.accent]}"></i>`; }
 
 // ================= SHOP =================
-let shop = {cw:"phoenix", size:"M", view:"front"};
+let shop = {cw:"original", size:"M", view:"front"};
 const shopJk = $("jacket");
 function curCW(){ return CW.find(c=>c.id===shop.cw); }
 function renderShop(){
@@ -1089,7 +1084,7 @@ $("placeOrder").addEventListener("click",()=>{
 });
 
 // ================= CHALLENGE (designer) =================
-let des = {s:{...CW[0].s}, from:"phoenix", zone:"yoke", view:"front"};
+let des = {s:{...CW[0].s}, from:"original", zone:"yoke", view:"front"};
 let entryDirty = false, entrySent = false, lastEntry = null;
 const desJk = makeJacket("d-", "Your colorway design");
 $("desFigs").appendChild(desJk);
