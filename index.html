@@ -93,7 +93,7 @@ main{display:block}
 .band .btn:hover{background:var(--ice-ink);color:var(--ice)}
 .band .btn.dark{background:var(--ice-ink);color:var(--ice)}
 .band .btn.dark:hover{background:#0B3F44}
-.signature{font-size:13px;font-weight:700;letter-spacing:.32em;color:var(--mist)}
+.signature{font-size:13px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--mist)}
 
 /* jacket rendering */
 .o{stroke:#0B0E11;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
@@ -286,6 +286,14 @@ footer .wrap{display:grid;gap:8px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 #regOut,#entryMsg,#toast,.err{overflow-wrap:anywhere}
 .puwhy{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:4px 28px;margin:14px 0 4px;max-width:900px}.puwhy p{margin:0;color:var(--mist);font-size:15px}.puwhy b{color:var(--paper)}
+@media (max-width:360px){.tabs a{padding:8px 4px;font-size:14px}}
+body.lock{overflow:hidden}
+.flow-list{display:none;list-style:none;margin:0;padding:0;counter-reset:fl}
+.flow-list li{position:relative;padding:10px 12px 10px 40px;border-radius:10px;border:1px solid var(--rule);background:#0C1214;margin-bottom:8px;font-size:15px;font-weight:600;counter-increment:fl}
+.flow-list li::before{content:counter(fl);position:absolute;left:12px;top:10px;width:20px;height:20px;border-radius:50%;background:var(--ice);color:var(--ice-ink);font-size:12px;font-weight:800;display:grid;place-items:center}
+.flow-list li.in{border-color:var(--ice)}.flow-list li.out{border-color:var(--heat)}.flow-list li.out::before{background:var(--heat)}
+@media (max-width:640px){.flow svg{display:none}.flow-list{display:block}}
+.closed{margin:0;padding:12px 14px;border-radius:10px;background:var(--slate);border:1px dashed var(--rule);color:var(--mist)}
 </style>
 </head>
 <body>
@@ -645,7 +653,7 @@ footer .wrap{display:grid;gap:8px}
 <!-- ================= ABOUT ================= -->
 <section class="panel" id="panel-about" aria-labelledby="abTitle" hidden>
   <div class="wrap section">
-    <p class="signature" translate="no">S T A Y &nbsp;C O O L , &nbsp;S T A Y &nbsp;F R E S H</p>
+    <p class="signature" translate="no">Stay cool, stay fresh</p>
     <h1 class="h-xl" id="abTitle" style="margin-top:16px" data-i18n="abT"></h1>
     <p class="lead" data-i18n="abD"></p>
     <div class="story">
@@ -664,8 +672,8 @@ footer .wrap{display:grid;gap:8px}
       <div class="tc"><span class="n">3</span><h3 data-i18n="t3t"></h3><p data-i18n="t3d"></p></div>
       <div class="tc"><span class="n">4</span><h3 data-i18n="t4t"></h3><p data-i18n="t4d"></p></div>
     </div>
-    <div class="flow" role="img" aria-labelledby="flowCap">
-      <svg viewBox="0 0 900 300" aria-hidden="true">
+    <div class="flow">
+      <svg viewBox="0 0 900 300" role="img" aria-labelledby="flowCap">
         <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3FE3EE"/></marker>
         <marker id="arh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#FF8A5B"/></marker></defs>
         <rect x="140" y="40" width="620" height="40" rx="8" fill="#0C1214" stroke="#2A393D"/>
@@ -682,6 +690,9 @@ footer .wrap{display:grid;gap:8px}
         <text x="880" y="34" text-anchor="end" fill="#FF8A5B" font-size="14" font-weight="700" font-family="Onest,Inter,sans-serif" data-i18n="fl6"></text>
         <path d="M450 226 V146" fill="none" stroke="#FF8A5B" stroke-width="2.5" marker-end="url(#arh)"/>
       </svg>
+      <ol class="flow-list">
+        <li data-i18n="fl1"></li><li class="in" data-i18n="fl5"></li><li data-i18n="fl3"></li><li data-i18n="fl2"></li><li data-i18n="fl4"></li><li class="out" data-i18n="fl6"></li>
+      </ol>
       <p class="fine" id="flowCap" style="margin-top:10px" data-i18n="flCap"></p>
     </div>
   </div>
@@ -765,7 +776,7 @@ footer .wrap{display:grid;gap:8px}
 </section>
 </main>
 
-<footer><div class="wrap"><span class="signature" translate="no">S T A Y &nbsp;C O O L , &nbsp;S T A Y &nbsp;F R E S H</span><span data-i18n="footer"></span></div></footer>
+<footer><div class="wrap"><span class="signature" translate="no">Stay cool, stay fresh</span><span data-i18n="footer"></span></div></footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 <div class="modal-bg" id="modal" hidden>
@@ -822,7 +833,7 @@ en:{
   entryDone:"Entry received (demo): “{c}” by {y}. Save your entry card and share it with #AquaCoolColorwayChallenge.",
   saveCard:"Save Entry Card", cardTip:"If it doesn't download, press and hold the image to save it.",
   cardTitle:"My AquaCool colorway", cardBy:"Designed by {y}", cardFoot:"Student concept for a marketing class · not an official AquaFlask product",
-  leaveWarn:"Your entry isn't submitted yet.",
+  leaveWarn:"Your entry isn't submitted yet.", closed:"Entries are closed. Thanks to everyone who joined. Follow AquaCool for the winner reveal.",
   prizeT:"What the winner gets",
   p1t:"Your design, made", p1d:"The winning colorway is produced as a limited-edition AquaCool jacket, named and credited to you.",
   p2t:"The first jacket off the line", p2d:"The winner gets the very first jacket made in their colorway, free.",
@@ -911,7 +922,7 @@ fil:{
   entryDone:"Natanggap ang entry (demo): “{c}” ni {y}. I-save ang entry card mo at i-share gamit ang #AquaCoolColorwayChallenge.",
   saveCard:"I-save ang Entry Card", cardTip:"Kung hindi nag-download, pindutin nang matagal ang image para i-save.",
   cardTitle:"Ang AquaCool colorway ko", cardBy:"Disenyo ni {y}", cardFoot:"Konsepto ng estudyante para sa marketing class · hindi opisyal na produkto ng AquaFlask",
-  leaveWarn:"Hindi pa naisusumite ang entry mo.",
+  leaveWarn:"Hindi pa naisusumite ang entry mo.", closed:"Sarado na ang entries. Salamat sa lahat ng sumali. I-follow ang AquaCool para sa pag-anunsyo ng panalo.",
   prizeT:"Ano ang makukuha ng panalo",
   p1t:"Gagawin ang disenyo mo", p1d:"Gagawing limited-edition na AquaCool jacket ang mananalong colorway, nakapangalan at naka-credit sa'yo.",
   p2t:"Ang unang jacket na magagawa", p2d:"Libreng makukuha ng panalo ang pinakaunang jacket na gagawin sa colorway niya.",
@@ -970,6 +981,9 @@ let lang = "en";
 try { const l = localStorage.getItem("aquacoolLang"); if (l === "en" || l === "fil") lang = l; else if ((navigator.languages||[]).some(x=>/^(fil|tl)/i.test(x))) lang = "fil"; } catch(e) {}
 const t = (k, v={}) => (T[lang][k] ?? T.en[k] ?? k).replace(/\{(\w+)\}/g, (_, x) => v[x] ?? "");
 const $ = id => document.getElementById(id);
+// Re-rendering replaces buttons; put focus back on the same control so keyboard users aren't dropped.
+function keepFocus(fn){ const el=document.activeElement, box=el&&el.parentElement&&el.parentElement.id, key=el&&[...(el.attributes||[])].find(x=>x.name.startsWith("data-")&&x.name!=="data-i18n");
+  fn(); if(box && key){ const n=document.querySelector(`#${box} [${key.name}="${CSS.escape(key.value)}"]`); if(n && n!==document.activeElement) n.focus({preventScroll:true}); } }
 const peso = n => new Intl.NumberFormat("en-PH",{style:"currency",currency:"PHP",maximumFractionDigits:0}).format(n);
 const fmtDate = (iso, opts={month:"short",day:"numeric",year:"numeric"}) => new Intl.DateTimeFormat(lang==="fil"?"fil-PH":"en-PH", opts).format(new Date(iso+"T00:00:00+08:00"));
 const fmtRange = (a,b) => { try { return new Intl.DateTimeFormat(lang==="fil"?"fil-PH":"en-PH",{month:"short",day:"numeric",year:"numeric"}).formatRange(new Date(a+"T00:00:00+08:00"), new Date(b+"T00:00:00+08:00")); } catch(e){ return fmtDate(a)+" – "+fmtDate(b); } };
@@ -1026,7 +1040,8 @@ function cwSwatch(c){ return `<i style="background:linear-gradient(135deg,${HEX[
 let shop = {cw:"original", size:"M", view:"front"};
 const shopJk = $("jacket");
 function curCW(){ return CW.find(c=>c.id===shop.cw); }
-function renderShop(){
+function renderShop(){ return keepFocus(()=>_renderShop()); }
+function _renderShop(){
   const c = curCW();
   paint(shopJk, c.s); setView(shopJk, shop.view);
   shopJk.setAttribute("aria-label", `AquaCool jacket in ${c.n}, ${shop.view} view`);
@@ -1066,8 +1081,8 @@ $("guideBtn").addEventListener("click",()=>{ $("guide").hidden = !$("guide").hid
 
 // checkout
 let lastFocus=null;
-function openBuy(){ lastFocus=document.activeElement; $("modal").hidden=false; $("placeOrder").focus(); }
-function closeBuy(){ $("modal").hidden=true; lastFocus?.focus?.(); }
+function openBuy(){ lastFocus=document.activeElement; $("modal").hidden=false; document.body.classList.add("lock"); $("placeOrder").focus(); }
+function closeBuy(){ $("modal").hidden=true; document.body.classList.remove("lock"); lastFocus?.focus?.(); }
 $("buyBtn").addEventListener("click", openBuy);
 $("mClose").addEventListener("click", closeBuy);
 $("modal").addEventListener("click", e=>{ if(e.target===$("modal")) closeBuy(); });
@@ -1088,7 +1103,8 @@ let des = {s:{...CW[0].s}, from:"original", zone:"yoke", view:"front"};
 let entryDirty = false, entrySent = false, lastEntry = null;
 const desJk = makeJacket("d-", "Your colorway design");
 $("desFigs").appendChild(desJk);
-function renderDesigner(){
+function renderDesigner(){ return keepFocus(()=>_renderDesigner()); }
+function _renderDesigner(){
   paint(desJk, des.s); setView(desJk, des.view);
   desJk.querySelectorAll("[data-zone]").forEach(el=>el.classList.toggle("active", el.dataset.zone===des.zone));
   document.querySelectorAll("#desStage [data-view]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.view===des.view));
@@ -1115,7 +1131,7 @@ $("entryForm").addEventListener("submit", async e=>{
   const c=$("eName").value.trim(), y=$("eYou").value.trim();
   fieldError("eName", c?"":t("errName")); fieldError("eYou", y?"":t("errYou"));
   if(!c){ $("eName").focus(); return; } if(!y){ $("eYou").focus(); return; }
-  const btn=$("submitEntry"); if(btn.disabled) return; btn.disabled=true; btn.textContent=t("submitting");
+  const btn=$("submitEntry"); if(btn.disabled || entriesClosed()) return; btn.disabled=true; btn.textContent=t("submitting");
   try{
     const url = await entryCard(c, y, $("eHandle").value.trim());
     $("entryImg").src=url; $("entryImg").alt=`Entry card for ${c} by ${y}`;
@@ -1154,7 +1170,10 @@ async function entryCard(name, you, handle){
   x.fillStyle="#6E8288"; x.font=`400 20px ${F}`; x.fillText(t("cardFoot"),70,1290);
   return cv.toDataURL("image/png");
 }
+function entriesClosed(){ return Date.now() > new Date(CH.close+"T23:59:59+08:00").getTime(); }
 function renderTimeline(){
+  const closed=entriesClosed(); $("entryForm").querySelectorAll("input,button").forEach(x=>x.disabled=closed);
+  let n=$("closedNote"); if(closed){ if(!n){ n=document.createElement("p"); n.id="closedNote"; n.className="closed"; $("entryForm").prepend(n); } n.textContent=t("closed"); } else if(n) n.remove();
   $("d1").textContent = fmtRange(CH.open, CH.close);
   $("d2").textContent = fmtDate(CH.shortlist);
   $("d3").textContent = fmtRange(CH.shortlist, CH.voteEnd);
@@ -1169,11 +1188,12 @@ function renderBrandGrid(){
 
 // ================= EVENTS =================
 let area="all", lastReg=null;
-function renderEvents(){
+function renderEvents(){ return keepFocus(()=>_renderEvents()); }
+function _renderEvents(){
   $("nfDate").textContent = fmtRange("2027-02-05","2027-02-06");
   $("filters").innerHTML = ["all","road","mall"].map(r=>`<button type="button" class="chip" data-r="${r}" aria-pressed="${r===area}">${t("r_"+r)}</button>`).join("");
   $("puWhy").innerHTML = (area==="all"?["road","mall"]:[area]).map(r=>`<p><b>${t("r_"+r)}.</b> ${t("why_"+r)}</p>`).join("");
-  const today=new Date(); const st=s=>{ const a=new Date(s.s+"T00:00:00+08:00"), b=new Date(s.e+"T23:59:59+08:00"); return today>b?"done":(today>=a?"now":"soon"); };
+  const today=new Date(); const st=s=>{ const a=new Date(s.s+"T00:00:00+08:00"), b=new Date(s.e+"T21:00:00+08:00"); return today>b?"done":(today>=a?"now":"soon"); };
   const nextIdx = STOPS.findIndex(s=>st(s)!=="done");
   $("stops").innerHTML = STOPS.map((s,i)=>({s,i,k:st(s)})).filter(o=>area==="all"||o.s.r===area).map(({s,i,k})=>{
     const lab = k==="now"?"stNow":(i===nextIdx?"stNext":(k==="done"?"stDone":"stSoon"));
@@ -1217,7 +1237,8 @@ function applyStatic(){
   document.querySelectorAll("[data-i18n-html]").forEach(el=>{ el.innerHTML=t(el.dataset.i18nHtml); });
   $("langEn").setAttribute("aria-pressed", lang==="en"); $("langFil").setAttribute("aria-pressed", lang==="fil");
 }
-function renderAll(){ applyStatic(); renderShop(); renderDesigner(); renderTimeline(); renderEvents(); renderEntryMsg(); }
+function renderAll(){ return keepFocus(()=>_renderAll()); }
+function _renderAll(){ applyStatic(); renderShop(); renderDesigner(); renderTimeline(); renderEvents(); renderEntryMsg(); }
 function setLang(l){ lang=l; try{ localStorage.setItem("aquacoolLang", l); }catch(e){} renderAll(); }
 $("langEn").addEventListener("click",()=>setLang("en"));
 $("langFil").addEventListener("click",()=>setLang("fil"));
